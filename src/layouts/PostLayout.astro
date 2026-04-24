@@ -1,0 +1,85 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { img }    from '../utils/cloudinary';
+
+interface Props {
+  title:       string;
+  date:        Date;
+  excerpt:     string;
+  cover:       string;
+}
+
+const { title, date, excerpt, cover } = Astro.props;
+
+const dateStr = date.toLocaleDateString('pl-PL', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+const jsonLd = {
+  '@context':     'https://schema.org',
+  '@type':        'BlogPosting',
+  headline:       title,
+  description:    excerpt,
+  image:          img.postCover(cover),
+  datePublished:  date.toISOString(),
+  dateModified:   date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name:    'Maciej Rafalski',
+    url:     'https://mrglassproject.com/about',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name:    'Glass Project',
+    logo: {
+      '@type': 'ImageObject',
+      url:     'https://mrglassproject.com/favicons/icon-512.png',
+    },
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={excerpt}
+  ogImage={img.og(cover)}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <article class="section-py">
+    <div class="container">
+      <div style="max-width: 768px; margin: 0 auto;">
+        <header style="margin-bottom: 2rem;">
+          <time datetime={date.toISOString()} style="color: var(--color-text-muted); font-size: 0.875rem;">
+            {dateStr}
+          </time>
+          <h1 style="margin-top: 0.5rem; font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 500;" class="text-gradient">
+            {title}
+          </h1>
+          <p style="color: var(--color-text-secondary); font-size: 1.125rem; margin-top: 1rem;">
+            {excerpt}
+          </p>
+        </header>
+
+        {cover && (
+          <figure style="margin-bottom: 3rem;">
+            <div class="img-wrapper">
+              <img
+                src={img.postCover(cover)}
+                alt={title}
+                width="1200"
+                height="675"
+                loading="eager"
+                decoding="async"
+              >
+            </div>
+          </figure>
+        )}
+
+        <div class="prose">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

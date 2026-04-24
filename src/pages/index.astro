@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type':    'WebPage',
+  '@id':      'https://mrglassproject.com/#webpage',
+  name:       'Glass Project — Pracownia Szkła Artystycznego',
+  url:        'https://mrglassproject.com',
+  isPartOf: { '@id': 'https://mrglassproject.com/#website' },
+};
+---
+
+<BaseLayout jsonLd={jsonLd}>
+  <section style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+    <div style="text-align: center;">
+      <h1 class="text-gradient" style="font-size: clamp(2rem, 6vw, 4rem); font-weight: 500; margin-bottom: 1rem;">
+        Glass Project
+      </h1>
+      <p style="color: var(--color-text-secondary); font-size: 1.125rem;">
+        Strona w budowie — zawartość wkrótce.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

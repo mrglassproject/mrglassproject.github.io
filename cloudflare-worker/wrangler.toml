@@ -1,0 +1,17 @@
+name               = "glassproject-voucher-worker"
+main               = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SITE_URL = "https://mrglassproject.com"
+
+# Sekrety — dodaj przez CLI:
+# wrangler secret put STRIPE_WEBHOOK_SECRET
+# wrangler secret put RESEND_API_KEY
+# wrangler secret put STRIPE_SECRET_KEY
+
+[[rules]]
+type        = "CompiledWasm"
+globs       = ["**/*.wasm"]
+fallthrough = true

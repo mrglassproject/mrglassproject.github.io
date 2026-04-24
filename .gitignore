@@ -1,0 +1,32 @@
+# Build
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+cloudflare-worker/node_modules/
+
+# Env — NIE wgrywaj do repo
+.env
+.env.*
+!.env.example
+
+# Logi setupu
+setup.log
+
+# Cloudflare Worker — pliki tymczasowe
+cloudflare-worker/.wrangler/
+
+# Fonty Worker — duże pliki binarne, wgraj ręcznie
+cloudflare-worker/assets/*.woff2
+cloudflare-worker/assets/*.ttf
+!cloudflare-worker/assets/.gitkeep
+!cloudflare-worker/assets/README.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

@@ -1,0 +1,20 @@
+{
+  "phone": "+48 500 603 151",
+  "email": "mrglassproject@gmail.com",
+  "address": "ul. Grójecka 79 lok. 7, 02-094 Warszawa",
+  "hours": "Poniedziałek–Piątek 8:00–16:00",
+  "social": {
+    "facebook": "https://www.facebook.com/p/Mrglassproject-100063557379907/",
+    "instagram": "https://www.instagram.com/maciejrafalski_glassproject/",
+    "tiktok": "https://www.tiktok.com/@mr_glassproject",
+    "googlemaps": "https://maps.app.goo.gl/vXUA1MQB47HWjrjP9"
+  },
+  "clients": [
+    "OBI",
+    "Wasalaa",
+    "Le Collet",
+    "AD 100",
+    "MedEstelle Institute",
+    "LUX MED"
+  ]
+}
