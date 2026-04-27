@@ -1,9 +1,9 @@
 # Glass Project — mrglassproject.com
 
-Strona pracowni szkła artystycznego. Zbudowana na Astro 4.x.
+Strona pracowni szkła artystycznego. Zbudowana na Astro 6.x.
 
 ## Stack
-- **Astro 4.x** — static site generator
+- **Astro 6.x** — static site generator
 - **Alpine.js** — interaktywność (mobile menu, galeria, modal)
 - **Sveltia CMS** — panel administracyjny (`/admin`)
 - **Cloudinary** — hosting i transformacje zdjęć
