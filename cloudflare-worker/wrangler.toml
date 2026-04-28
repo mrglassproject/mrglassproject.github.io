@@ -11,6 +11,9 @@ SITE_URL = "https://mrglassproject.com"
 # wrangler secret put RESEND_API_KEY
 # wrangler secret put STRIPE_SECRET_KEY
 
+[assets]
+directory = "./assets"
+
 [[rules]]
 type        = "CompiledWasm"
 globs       = ["**/*.wasm"]
