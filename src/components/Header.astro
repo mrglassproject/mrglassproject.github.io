@@ -8,104 +8,34 @@ const isActive = (href: string) => {
 };
 ---
 
-<header>
-  <div x-data="{ open: false }" class="nav-wrapper">
-    <div class="container">
-      <nav aria-label="Nawigacja główna">
-        <a href="/" class="nav-logo" aria-label={SITE.fullName}>
-          <img
-            src={withBase(MEDIA.logo.src)}
-            alt={MEDIA.logo.alt}
-            width={MEDIA.logo.navWidth}
-            height={MEDIA.logo.navHeight}
-            loading="eager"
-            decoding="async"
-          >
-        </a>
+<header x-data="{ open: false }">
+  <div class="container px-4 mx-auto">
+    <nav class="flex justify-between items-center py-8">
 
-        <ul class="nav-list" role="list">
-          {NAV.map(({ label, href }) => (
-            <li>
-              <a
-                href={href}
-                class:list={['nav-link', { 'nav-link--active': isActive(href) }]}
-                aria-current={isActive(href) ? 'page' : undefined}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <a href="/" aria-label={SITE.fullName} class="flex items-center">
+        <img
+          src={withBase(MEDIA.logo.src)}
+          alt={MEDIA.logo.alt}
+          width={MEDIA.logo.navWidth}
+          height={MEDIA.logo.navHeight}
+          class="w-32 h-auto"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
 
-        <a href={NAV_CTA.href} class="nav-cta" aria-label={`${NAV_CTA.label} — zarezerwuj miejsce`}>
-          {NAV_CTA.label}
-        </a>
-
-        <button
-          class="nav-toggle"
-          x-on:click="open = !open"
-          x-bind:aria-expanded="open.toString()"
-          aria-controls="mobile-menu"
-          aria-label="Otwórz menu"
-        >
-          <svg width="24" height="24" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <div
-      id="mobile-menu"
-      x-show="open"
-      x-transition:enter="transition ease-out duration-200"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="transition ease-in duration-150"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      class="mobile-overlay"
-      x-on:click="open = false"
-      aria-hidden="true"
-    ></div>
-
-    <nav
-      x-show="open"
-      x-transition:enter="transition ease-out duration-200"
-      x-transition:enter-start="opacity-0 -translate-x-4"
-      x-transition:enter-end="opacity-100 translate-x-0"
-      x-transition:leave="transition ease-in duration-150"
-      x-transition:leave-start="opacity-100 translate-x-0"
-      x-transition:leave-end="opacity-0 -translate-x-4"
-      class="mobile-nav"
-      aria-label="Nawigacja mobilna"
-    >
-      <div class="mobile-nav__header">
-        <a href="/" aria-label={SITE.fullName}>
-          <img
-            src={withBase(MEDIA.logo.src)}
-            alt={MEDIA.logo.alt}
-            width={MEDIA.logo.navWidth}
-            height={MEDIA.logo.navHeight}
-            loading="lazy"
-            decoding="async"
-          >
-        </a>
-        <button x-on:click="open = false" aria-label="Zamknij menu">
-          <svg width="24" height="24" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-
-      <ul role="list" style="list-style:none;padding:0;margin:0;">
+      <ul class="hidden lg:flex ml-auto mr-8 items-center space-x-8 list-none">
         {NAV.map(({ label, href }) => (
           <li>
             <a
               href={href}
-              class:list={['mobile-nav__link', { 'mobile-nav__link--active': isActive(href) }]}
+              class:list={[
+                'text-sm font-medium transition-colors duration-200',
+                isActive(href)
+                  ? 'text-glass-white'
+                  : 'text-glass-muted hover:text-glass-white'
+              ]}
               aria-current={isActive(href) ? 'page' : undefined}
-              x-on:click="open = false"
             >
               {label}
             </a>
@@ -113,136 +43,108 @@ const isActive = (href: string) => {
         ))}
       </ul>
 
-      <div class="mobile-nav__footer">
-        <a href={NAV_CTA.href} class="nav-cta" style="display:block;text-align:center;">
-          {NAV_CTA.label}
-        </a>
-      </div>
+      <a
+        href={NAV_CTA.href}
+        class="hidden lg:block px-6 py-3 text-sm font-semibold text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow rounded-full transition-all duration-200 hover:shadow-lg"
+        aria-label={`${NAV_CTA.label} — zarezerwuj miejsce`}
+      >
+        {NAV_CTA.label}
+      </a>
+
+      <button
+        class="lg:hidden block text-glass-muted hover:text-glass-white focus:outline-none transition-colors duration-200"
+        x-on:click="open = !open"
+        x-bind:aria-expanded="open.toString()"
+        aria-controls="mobile-menu-panel"
+        aria-label="Otwórz menu"
+      >
+        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+        </svg>
+      </button>
+
     </nav>
   </div>
+
+  {/* Overlay */}
+  <div
+    x-show="open"
+    x-on:click="open = false"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 bg-glass-black/80 z-40"
+    aria-hidden="true"
+  ></div>
+
+  {/* Menu mobilne */}
+  <nav
+    id="mobile-menu-panel"
+    x-show="open"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 -translate-x-4"
+    x-transition:enter-end="opacity-100 translate-x-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 translate-x-0"
+    x-transition:leave-end="opacity-0 -translate-x-4"
+    class="fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50 flex flex-col py-6 px-6 bg-glass-anthracite border-r border-glass-border overflow-y-auto"
+    aria-label="Nawigacja mobilna"
+  >
+    <div class="flex items-center justify-between mb-12">
+      <a href="/" aria-label={SITE.fullName}>
+        <img
+          src={withBase(MEDIA.logo.src)}
+          alt={MEDIA.logo.alt}
+          width={MEDIA.logo.navWidth}
+          height={MEDIA.logo.navHeight}
+          class="w-32 h-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <button
+        x-on:click="open = false"
+        aria-label="Zamknij menu"
+        class="text-glass-muted hover:text-glass-white transition-colors duration-200"
+      >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="list-none p-0 m-0">
+      {NAV.map(({ label, href }) => (
+        <li class="mb-1">
+          <a
+            href={href}
+            class:list={[
+              'block p-4 text-sm font-semibold rounded-lg transition-all duration-200',
+              isActive(href)
+                ? 'text-glass-white bg-glass-black'
+                : 'text-glass-muted hover:text-glass-white hover:bg-glass-black'
+            ]}
+            aria-current={isActive(href) ? 'page' : undefined}
+            x-on:click="open = false"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-auto pt-6">
+      <a
+        href={NAV_CTA.href}
+        class="block px-6 py-3 text-sm text-center font-semibold text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow rounded-full transition-all duration-200"
+        x-on:click="open = false"
+      >
+        {NAV_CTA.label}
+      </a>
+    </div>
+  </nav>
+
 </header>
-
-<style>
-  .nav-wrapper { position: relative; }
-
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 0;
-    gap: 1rem;
-  }
-
-  .nav-logo img { display: block; width: 8rem; height: auto; }
-
-  .nav-list {
-    display: none;
-    list-style: none;
-    padding: 0;
-    margin: 0 2rem 0 auto;
-    gap: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    .nav-list   { display: flex; align-items: center; }
-    .nav-toggle { display: none; }
-    .nav-cta    { display: inline-flex; align-items: center; }
-  }
-
-  .nav-link {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--color-glass-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-link:hover,
-  .nav-link--active { color: var(--color-glass-white); }
-
-  .nav-cta {
-    display: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-glass-black);
-    background-color: var(--color-glass-accent-amber);
-    border-radius: 9999px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-  }
-  .nav-cta:hover { background-color: var(--color-glass-accent-glow); }
-
-  .nav-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-glass-muted);
-    transition: color 0.2s;
-  }
-  .nav-toggle:hover { color: var(--color-glass-white); }
-
-  @media (min-width: 1024px) { .nav-toggle { display: none; } }
-
-  .mobile-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10,10,11,0.8);
-    z-index: 40;
-  }
-
-  .mobile-nav {
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
-    width: 83.333%;
-    max-width: 24rem;
-    z-index: 50;
-    background-color: var(--color-glass-anthracite);
-    border-right: 1px solid var(--color-glass-border);
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    overflow-y: auto;
-  }
-
-  .mobile-nav__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-  }
-
-  .mobile-nav__header button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-glass-muted);
-    transition: color 0.2s;
-  }
-  .mobile-nav__header button:hover { color: var(--color-glass-white); }
-
-  .mobile-nav__link {
-    display: block;
-    padding: 1rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-glass-muted);
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: color 0.2s, background-color 0.2s;
-    margin-bottom: 0.25rem;
-  }
-  .mobile-nav__link:hover,
-  .mobile-nav__link--active {
-    color: var(--color-glass-white);
-    background-color: var(--color-glass-black);
-  }
-
-  .mobile-nav__footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
-  }
-</style>
