@@ -1,5 +1,5 @@
 export const SITE = {
-  name: 'Glass Project',
+  name: 'MR Glass Project',
   fullName: 'Pracownia Szkła Artystycznego Maciej Rafalski Glass Project',
   description: 'Pracownia szkła artystycznego w Warszawie. Projekty na zamówienie dla firm, hoteli i architektów.',
   url: 'https://mrglassproject.github.io/mrglassproject-com',
