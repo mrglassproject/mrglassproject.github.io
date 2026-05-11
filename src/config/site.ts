@@ -8,7 +8,7 @@ export const SITE = {
   locale: 'pl_PL',
   themeColor: '#FF8C00',
   bgColor: '#0A0A0B',
-  ogImage: 'https://res.cloudinary.com/mrglassproject/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/og-default',
+  ogImage: 'https://res.cloudinary.com/mrglassproject/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/home/og-default',
 } as const;
 
 export const CONTACT = {
@@ -92,13 +92,14 @@ export const MEDIA = {
     navHeight: 45,
   },
   favicon: {
-    ico:            '/favicons/favicon.ico',
-    svg:            '/favicons/favicon.svg',
-    appleTouchIcon: '/favicons/apple-touch-icon.png',
-    icon192:        '/favicons/icon-192.png',
-    icon512:        '/favicons/icon-512.png',
-    manifest:       '/favicons/manifest.webmanifest',
-  },
+  ico:            '/favicons/favicon.ico',
+  svg:            '/favicons/favicon.svg',
+  appleTouchIcon: '/favicons/apple-touch-icon.png',
+  icon96:         '/favicons/favicon-96x96.png',
+  icon192:        '/favicons/web-app-manifest-192x192.png',
+  icon512:        '/favicons/web-app-manifest-512x512.png',
+  manifest:       '/favicons/manifest.webmanifest',
+},
 } as const;
 
 export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
