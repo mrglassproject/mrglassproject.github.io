@@ -43,4 +43,8 @@ export const img = {
   postCover:     (id: string) => cloudinaryUrl(id, { width: 1200, aspectRatio: '16:9', crop: 'fill' }),
   postThumb:     (id: string) => cloudinaryUrl(id, { width: 600,  aspectRatio: '16:9', crop: 'fill' }),
   og:            (id: string) => cloudinaryUrl(id, { width: 1200, height: 630,         crop: 'fill' }),
+  portrait:      (id: string) => cloudinaryUrl(id, { width: 600,  aspectRatio: '3:4',  crop: 'fill' }),  
+  story:         (id: string) => cloudinaryUrl(id, { width: 600,  aspectRatio: '9:16', crop: 'fill' }),  
+  square:        (id: string) => cloudinaryUrl(id, { width: 800,  aspectRatio: '1:1',  crop: 'fill' }),  
+  wide:          (id: string) => cloudinaryUrl(id, { width: 1600, aspectRatio: '21:9', crop: 'fill' }), 
 };

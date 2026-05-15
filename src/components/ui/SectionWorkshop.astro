@@ -1,0 +1,54 @@
+---
+import { NAV_CTA } from '../../config/site';
+import { img } from '../../utils/cloudinary';
+---
+
+<section class="py-20 lg:py-28">
+  <div class="container px-4 mx-auto">
+    <div class="flex flex-wrap items-center -mx-4">
+
+      <div class="w-full lg:w-1/2 px-4 mb-16 lg:mb-0">
+        <div class="p-1 border border-glass-border rounded-2xl">
+          <img
+            src={img.square('home/maciej-rafalski-glass-project-warszawa-fot-home-section-warsztaty.webp')}
+            alt="Maciej Rafalski w pracowni szkła popdczas warsztatów uczy obsługi piszczela."
+            width="640"
+            height="640"
+            class="w-full h-auto object-cover rounded-xl"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <div class="w-full lg:w-1/2 px-4 lg:pl-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl leading-tight font-medium text-gradient font-heading mb-8">
+          Weź udział w warsztatach. Stań przy piecu. Poczuj
+          <span class="text-gradient-amber">żar stopionego</span>
+          szkła!
+        </h2>
+
+        <p class="text-lg leading-relaxed text-glass-muted mb-6">
+          To nie pokaz – to realne doświadczenie procesu.
+        </p>
+        <p class="text-lg leading-relaxed text-glass-muted mb-6">
+          To nie jest kurs. To prawdziwe doświadczenie pracy ze szkłem.
+        </p>
+        <p class="text-lg leading-relaxed text-glass-muted mb-10">
+          Warsztaty odbywają się w pracowni, w małych grupach. Liczba miejsc jest ograniczona.
+        </p>
+
+        <a
+          href={NAV_CTA.href}
+          class="inline-flex items-center text-glass-accent-amber hover:text-glass-accent-glow font-medium transition-colors duration-200 border-b border-glass-accent-amber hover:border-glass-accent-glow pb-1 group"
+        >
+          <span>Poznaj ofertę warsztatów</span>
+          <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

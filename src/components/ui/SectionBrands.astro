@@ -1,0 +1,29 @@
+---
+import settings from '../../data/settings.json';
+
+const clients = settings.clients;
+---
+
+<section class="py-20 lg:py-28">
+  <div class="container px-4 mx-auto">
+
+    <hr class="border-t border-glass-border mb-8" />
+
+    <h2 class="mb-12 text-center text-3xl md:text-4xl lg:text-5xl font-medium text-gradient font-heading">
+      Kto wybrał nasze szkło?
+    </h2>
+
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-wrap justify-center -m-4 -mx-6">
+        {clients.map(name => (
+          <div class="w-1/2 md:w-1/3 lg:w-1/5 p-4 flex items-center justify-center">
+            <p class="text-3xl text-glass-white">{name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <hr class="border-t border-glass-border mt-8" />
+
+  </div>
+</section>

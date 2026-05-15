@@ -1,39 +1,41 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { img }    from '../utils/cloudinary';
+import { SITE }   from '../config/site';
 
 interface Props {
-  title:       string;
-  date:        Date;
-  excerpt:     string;
-  cover:       string;
+  title:         string;
+  date:          Date;
+  dateModified?: Date;
+  excerpt:       string;
+  cover:         string;
 }
 
-const { title, date, excerpt, cover } = Astro.props;
+const { title, date, dateModified, excerpt, cover } = Astro.props;
 
 const dateStr = date.toLocaleDateString('pl-PL', {
   year: 'numeric', month: 'long', day: 'numeric',
 });
 
 const jsonLd = {
-  '@context':     'https://schema.org',
-  '@type':        'BlogPosting',
-  headline:       title,
-  description:    excerpt,
-  image:          img.postCover(cover),
-  datePublished:  date.toISOString(),
-  dateModified:   date.toISOString(),
+  '@context':    'https://schema.org',
+  '@type':       'BlogPosting',
+  headline:      title,
+  description:   excerpt,
+  image:         img.postCover(cover),
+  datePublished: date.toISOString(),
+  dateModified:  (dateModified ?? date).toISOString(),
   author: {
     '@type': 'Person',
     name:    'Maciej Rafalski',
-    url:     'https://mrglassproject.com/about',
+    url:     `${SITE.finalUrl}/about`,
   },
   publisher: {
     '@type': 'Organization',
-    name:    'Glass Project',
+    name:    SITE.name,
     logo: {
       '@type': 'ImageObject',
-      url:     'https://mrglassproject.com/favicons/icon-512.png',
+      url:     `${SITE.finalUrl}/favicons/web-app-manifest-512x512.png`,
     },
   },
 };
@@ -47,22 +49,26 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <article class="section-py">
-    <div class="container">
-      <div style="max-width: 768px; margin: 0 auto;">
-        <header style="margin-bottom: 2rem;">
-          <time datetime={date.toISOString()} style="color: var(--color-text-muted); font-size: 0.875rem;">
+    <div class="container px-4 mx-auto">
+      <div class="max-w-3xl mx-auto">
+
+        <header class="mb-8">
+          <time
+            datetime={date.toISOString()}
+            class="text-sm text-glass-muted"
+          >
             {dateStr}
           </time>
-          <h1 style="margin-top: 0.5rem; font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 500;" class="text-gradient">
+          <h1 class="mt-2 text-gradient font-heading text-[clamp(1.75rem,4vw,3rem)] font-medium leading-tight">
             {title}
           </h1>
-          <p style="color: var(--color-text-secondary); font-size: 1.125rem; margin-top: 1rem;">
+          <p class="mt-4 text-lg text-glass-muted">
             {excerpt}
           </p>
         </header>
 
         {cover && (
-          <figure style="margin-bottom: 3rem;">
+          <figure class="mb-12">
             <div class="img-wrapper">
               <img
                 src={img.postCover(cover)}
@@ -71,7 +77,7 @@ const jsonLd = {
                 height="675"
                 loading="eager"
                 decoding="async"
-              >
+              />
             </div>
           </figure>
         )}
@@ -79,6 +85,7 @@ const jsonLd = {
         <div class="prose">
           <slot />
         </div>
+
       </div>
     </div>
   </article>
