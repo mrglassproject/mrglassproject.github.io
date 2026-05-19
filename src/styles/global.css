@@ -99,11 +99,45 @@
 
   /* Padding sekcji — spójny rytm pionowy */
   .section-py {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @media (min-width: 768px) {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
     @media (min-width: 1024px) {
       padding-top: 7rem;
       padding-bottom: 7rem;
+    }
+  }
+
+    /* tag h2 unifikacja */
+  .section-heading {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 500;
+  font-family: var(--font-heading);
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #f3f4f6, #e5e7eb, #d1d5db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  }
+
+  /* Akapit — standard dla treści narracyjnych */
+  .prose-p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-glass-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-p:last-child {
+  margin-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .prose-p {
+      font-size: 1.25rem;
     }
   }
 
@@ -115,31 +149,6 @@
   }
 
   .img-wrapper img {
-    width: 100%;
-    display: block;
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-glass-border);
-  }
-
-  /* Wrapper zdjęcia z bluram dekoracyjnym (sekcje narracyjne) */
-  .img-wrapper-glow {
-    position: relative;
-    padding: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 1rem;
-  }
-
-  .img-wrapper-glow::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(to right, rgb(147 51 234 / 0.2), rgb(126 34 206 / 0.2));
-    filter: blur(40px);
-    z-index: -1;
-  }
-
-  .img-wrapper-glow img {
     width: 100%;
     display: block;
     border-radius: 0.75rem;
@@ -211,7 +220,7 @@
   }
 
   .btn-white:hover {
-    background-color: #e4e4e7;
+    background-color: color-mix(in srgb, var(--color-glass-white) 90%, black);
   }
 
   /* Karta — surface z borderem */
@@ -244,7 +253,7 @@
   .form-input {
     width: 100%;
     padding: 0.75rem;
-    background-color: #171717;
+    background-color: var(--color-glass-anthracite);
     border: 1px solid var(--color-glass-border);
     border-radius: 0.5rem;
     color: var(--color-glass-white);
@@ -294,21 +303,6 @@
     );
   }
 
-  /* Blur dekoracyjny — purple glow za zdjęciami */
-  .glow-purple {
-    position: relative;
-  }
-
-  .glow-purple::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgb(126 34 206 / 0.2), rgb(88 28 135 / 0.2));
-    filter: blur(48px);
-    border-radius: inherit;
-    z-index: -1;
-  }
-
   /* Blur dekoracyjny — amber glow */
   .glow-amber {
     position: relative;
@@ -324,7 +318,7 @@
     z-index: -1;
   }
 
-  /* Tekst accent amber */
+  /* Tekst accent */
   .text-amber { color: var(--color-glass-accent-amber); }
   .text-cool  { color: var(--color-glass-accent-cool); }
   .text-fire  { color: var(--color-glass-accent-fire); }

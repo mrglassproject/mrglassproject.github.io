@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { img }    from '../utils/cloudinary';
+import { img, cloudinarySrcset } from '../utils/cloudinary';
 import { SITE }   from '../config/site';
 
 interface Props {
@@ -70,14 +70,27 @@ const jsonLd = {
         {cover && (
           <figure class="mb-12">
             <div class="img-wrapper">
-              <img
-                src={img.postCover(cover)}
-                alt={title}
-                width="1200"
-                height="675"
-                loading="eager"
-                decoding="async"
-              />
+              <picture>
+                <source
+                  media="(max-width: 640px)"
+                  srcset={cloudinarySrcset(cover, [400, 640], { aspectRatio: '1:1', crop: 'fill' })}
+                  sizes="100vw"
+                />
+                <source
+                  media="(min-width: 641px)"
+                  srcset={cloudinarySrcset(cover, [768, 1200], { aspectRatio: '16:9', crop: 'fill' })}
+                  sizes="768px"
+                />
+                <img
+                  src={img.postCover(cover)}
+                  alt={title}
+                  width="1200"
+                  height="675"
+                  loading="eager"
+                  decoding="async"
+                  class="w-full h-auto rounded-xl"
+                />
+              </picture>
             </div>
           </figure>
         )}

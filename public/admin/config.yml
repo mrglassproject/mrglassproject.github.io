@@ -9,6 +9,9 @@ media_library:
   config:
     cloud_name: mrglassproject
     api_key: 281332465646415
+    use_filename: true
+    unique_filename: false
+    overwrite: true
     default_transformations:
       - - fetch_format: auto
           quality: auto
