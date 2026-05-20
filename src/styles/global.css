@@ -323,4 +323,10 @@
   .text-cool  { color: var(--color-glass-accent-cool); }
   .text-fire  { color: var(--color-glass-accent-fire); }
   .text-muted { color: var(--color-glass-muted); }
+
+  .text-mono-highlight {
+  color: var(--color-glass-accent-amber);
+  font-family: var(--font-mono);
+  }
+
 }
