@@ -114,5 +114,5 @@ export function withBase(path: string): string {
 }
 
 export const ANALYTICS = {
-  gtmId: 'GTM-XXXXXXX',
+  gtmId: 'GTM-KJBWFFDN',
 } as const;
