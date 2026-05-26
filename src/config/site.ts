@@ -57,6 +57,7 @@ export const NAV = [
   { label: 'Pracownia',     href: '/workshop' },
   { label: 'Realizacje',    href: '/portfolio' },
   { label: 'Oferta',        href: '/services' },
+  { label: 'Vouchery',        href: '/vouchers' },
   { label: 'FAQ',           href: '/faq' },
   { label: 'Kontakt',       href: '/contact' },
 ] as const;
