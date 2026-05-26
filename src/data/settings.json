@@ -13,8 +13,21 @@
     "OBI",
     "Wasalaa",
     "Le Collet",
-    "AD 100",
-    "MedEstelle Institute",
+    "MedEstelle",
     "LUX MED"
+  ],
+  "ofertaFirmy": [
+    "slug-projektu-1",
+    "slug-projektu-2",
+    "slug-projektu-3",
+    "slug-projektu-4",
+    "slug-projektu-5"
+  ],
+  "ofertaDom": [
+    "slug-projektu-6",
+    "slug-projektu-7",
+    "slug-projektu-8",
+    "slug-projektu-9",
+    "slug-projektu-10"
   ]
 }

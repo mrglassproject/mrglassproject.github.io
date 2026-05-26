@@ -22,7 +22,7 @@ export const CONTACT = {
   emailHref: 'mailto:mrglassproject@gmail.com',
   nip: '8762371621',
   regon: '387628069',
-  hours: 'Poniedziałek–Piątek 8:00–16:00',
+  hours: 'Poniedziałek – Piątek 8:00–16:00',
   hoursSchema: 'Mo-Fr 08:00-16:00',
   lat: 52.2121751,
   lng: 20.9779826,
@@ -43,14 +43,18 @@ export const CLOUDINARY = {
 } as const;
 
 export const FORMSPARK = {
-  formId: 'LD7NsyDKF',
+  formId: import.meta.env.PUBLIC_FORMSPARK_FORM_ID,
   url: 'https://submit-form.com',
+} as const;
+
+export const TURNSTILE = {
+  siteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY,
 } as const;
 
 export const NAV = [
   { label: 'Start',         href: '/' },
   { label: 'Moja historia', href: '/about' },
-  { label: 'Pracownia',     href: '/pracownia' },
+  { label: 'Pracownia',     href: '/workshop' },
   { label: 'Realizacje',    href: '/portfolio' },
   { label: 'Oferta',        href: '/services' },
   { label: 'FAQ',           href: '/faq' },
@@ -59,13 +63,13 @@ export const NAV = [
 
 export const NAV_CTA = {
   label: 'Warsztaty',
-  href: '/workshop',
+  href: '/workshops',
 } as const;
 
 export const FOOTER_NAV = [
   { label: 'Start',               href: '/' },
   { label: 'Oferta',              href: '/services' },
-  { label: 'Warsztaty',           href: '/workshop' },
+  { label: 'Warsztaty',           href: '/workshops' },
   { label: 'FAQ',                 href: '/faq' },
   { label: 'Kontakt',             href: '/contact' },
   { label: 'Regulamin',           href: '/terms' },

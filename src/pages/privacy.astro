@@ -1,14 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const entries = await getCollection('pages');
+const entry = entries.find(e => e.id === 'privacy');
+const { Content } = await render(entry);
 ---
 
-<BaseLayout title="Polityka prywatności">
+<BaseLayout
+  title="Polityka prywatności — MR Glass Project"
+  description="Polityka prywatności pracowni szkła artystycznego MR Glass Project Maciej Rafalski."
+>
+
   <section class="section-py">
-    <div class="container">
-      <h1 class="text-gradient" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 500; margin-bottom: 2rem;">
-        Polityka prywatności
-      </h1>
-      <p style="color: var(--color-text-secondary);">Treść strony wkrótce.</p>
+    <div class="container px-4 mx-auto">
+      <div class="max-w-3xl mx-auto">
+
+        <h1 class="section-heading">{entry.data.title}</h1>
+
+        {entry.data.updatedAt && (
+          <p class="mb-8 text-sm text-glass-smoke">
+            Ostatnia aktualizacja: {new Date(entry.data.updatedAt).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </p>
+        )}
+
+        <div class="prose-content">
+          <Content />
+        </div>
+
+      </div>
     </div>
   </section>
+
 </BaseLayout>

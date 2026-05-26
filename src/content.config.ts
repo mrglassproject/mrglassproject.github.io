@@ -12,16 +12,24 @@ const posts = defineCollection({
   }),
 });
 
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  schema: z.object({
+    title:     z.string(),
+    updatedAt: z.string().optional(),
+  }),
+});
+
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
     title:       z.string(),
     category:    z.enum(['dla-domu', 'dla-firm']),
     images:      z.array(z.string()),
-    description: z.string().optional(),
-    year:        z.number().optional(),
-    dimensions:  z.string().optional(),
-    order:       z.number().default(0),
+    description: z.string().optional().nullable(),
+    year:        z.coerce.number().optional().nullable(),
+    dimensions:  z.string().optional().nullable(),
+    order:       z.coerce.number().default(0).optional().nullable(),
     published:   z.boolean().default(true),
   }),
 });
@@ -37,20 +45,23 @@ const workshops = defineCollection({
     pricePair:      z.number().optional(),
     pricePairLabel: z.string().optional(),
     level:          z.enum(['fusing', 'podstawowy', 'zaawansowany', 'indywidualny']),
-    setmoreUrl:     z.string().url(),
+    setmoreUrl:     z.string(),
     active:         z.boolean().default(true),
     order:          z.number().default(0),
+    featured:       z.boolean().default(false),
+    stripeUrl1: z.string().optional(),
+    stripeUrl2: z.string().optional(),
   }),
 });
 
 const testimonials = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/testimonials' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/testimonials' }),
   schema: z.object({
     name:    z.string(),
     content: z.string(),
     rating:  z.number().min(1).max(5).default(5),
     date:    z.string(),
-    source:  z.string().default('Google'),
+    source:  z.string().optional(),
   }),
 });
 
@@ -60,14 +71,14 @@ const vouchers = defineCollection({
     title:       z.string(),
     description: z.string(),
     price:       z.number(),
-    buyUrl:      z.string().url().optional(),
+    buyUrl:      z.string().optional(),
     active:      z.boolean().default(true),
     order:       z.number().default(0),
   }),
 });
 
 const faq = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/faq' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/faq' }),
   schema: z.object({
     question: z.string(),
     answer:   z.string(),
@@ -75,11 +86,22 @@ const faq = defineCollection({
   }),
 });
 
+const voucherFaq = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/voucherfaq' }),
+  schema: z.object({
+    order:    z.number().optional(),
+    question: z.string(),
+    answer:   z.string(),
+  }),
+});
+
 export const collections = {
   posts,
+  pages,
   projects,
   workshops,
   testimonials,
   vouchers,
   faq,
+  voucherfaq: voucherFaq,
 };

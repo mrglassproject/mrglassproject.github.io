@@ -8,6 +8,9 @@ pricePair: 850
 pricePairLabel: "2 os. tylko 850 zł"
 level: "podstawowy"
 setmoreUrl: "https://setmore.com/TWOJ_LINK_PODSTAWOWY"
+stripeUrl1: "https://buy.stripe.com/test_dRm8wQaGudJjc5F5AugUM02"
+stripeUrl2: "https://buy.stripe.com/test_bJe7sM6qe34F6LlbYSgUM03"
 active: true
 order: 2
+featured: true
 ---

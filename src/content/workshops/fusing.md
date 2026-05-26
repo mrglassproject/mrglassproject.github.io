@@ -8,6 +8,8 @@ pricePair: 650
 pricePairLabel: "2 os. tylko 650 zł"
 level: "fusing"
 setmoreUrl: "https://setmore.com/TWOJ_LINK_FUSING"
+stripeUrl1: "https://buy.stripe.com/test_aFa7sM8ymbBb5HhbYSgUM00"
+stripeUrl2: "https://buy.stripe.com/test_4gMfZi3e2dJjedN0gagUM01"
 active: true
 order: 1
 ---

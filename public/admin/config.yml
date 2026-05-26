@@ -56,7 +56,7 @@ collections:
         field: { name: image, label: Zdjęcie, widget: image, media_library: { name: cloudinary } }
       - { name: description, label: Opis,         widget: text,    required: false }
       - { name: year,        label: Rok,           widget: number,  required: false }
-      - { name: dimensions,  label: Wymiary,       widget: string,  required: false }
+      - { name: dimensions,  label: Wymiary,       widget: text,  required: false }
       - { name: order,       label: Kolejność,     widget: number,  default: 0 }
       - { name: published,   label: Opublikowana,  widget: boolean, default: true }
       - { name: body,        label: Opis rozszerzony, widget: markdown, required: false }
