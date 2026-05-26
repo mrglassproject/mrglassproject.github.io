@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://mrglassproject.github.io',
-  base: '/mrglassproject-com',
+  base: '',
   integrations: [
     alpinejs(),
     sitemap(),
