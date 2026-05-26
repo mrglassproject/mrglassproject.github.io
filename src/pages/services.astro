@@ -42,7 +42,7 @@ const domLayout   = getMasonryLayout(domProjects);
 ---
 
 <BaseLayout
-  title="Oferta — Szklane obiekty na zamówienie | Glass Project"
+  title="Oferta — Szklane obiekty na zamówienie | MR Glass Project"
   description="Projekty szklane na zamówienie dla firm, hoteli, architektów i klientów prywatnych. Pracownia szkła artystycznego Maciej Rafalski, Warszawa."
 >
 
@@ -78,13 +78,13 @@ const domLayout   = getMasonryLayout(domProjects);
 
         <div class="w-full lg:w-1/2 px-4">
           <h1 class="mb-8 section-heading">Projekty na zamówienie dla firm, hoteli i architektów</h1>
-          <p class="prose-p">Od 2005 roku realizujemy szklane obiekty, które stają się częścią architektury, identyfikacji wizualnej i przestrzeni komercyjnych. Każda realizacja powstaje tu, w pracowni na Ochocie, ręcznie — od pierwszego szkicu do gotowego elementu.</p>
+          <p class="prose-p">Od 2005 roku realizujemy szklane obiekty, które stają się częścią architektury, identyfikacji wizualnej i przestrzeni komercyjnych. Każda realizacja powstaje tu, w pracowni na Ochocie, ręcznie - od pierwszego szkicu do gotowego elementu.</p>
 
           <ul class="space-y-8">
             {[
               { title: 'Wykonujemy realizacje dla hoteli, biur i przestrzeni usługowych', desc: 'Tworzymy obiekty dekoracyjne, elementy świetlne oraz formy dedykowane recepcjom, lobby, restauracjom i przestrzeniom eventowym.' },
-              { title: 'Tworzymy elementy identyfikacji wizualnej i projekty specjalne', desc: 'Realizujemy obiekty okolicznościowe, formy dedykowane — takie jak nagrody czy statuetki — oraz projekty, w których szkło staje się elementem kampanii wizerunkowych.' },
-              { title: 'Produkujemy elementy przestrzenne i architektoniczne', desc: 'Wytwarzamy szklane formy, które stają się integralną częścią architektury — od rzeźb i instalacji artystycznych, przez dekoracyjne panele i moduły ścienne z reliefem, po podświetlane sufity oraz elementy fasad i witryn.' },
+              { title: 'Tworzymy elementy identyfikacji wizualnej i projekty specjalne', desc: 'Realizujemy obiekty okolicznościowe, formy dedykowane - takie jak nagrody czy statuetki - oraz projekty, w których szkło staje się elementem kampanii wizerunkowych.' },
+              { title: 'Produkujemy elementy przestrzenne i architektoniczne', desc: 'Wytwarzamy szklane formy, które stają się integralną częścią architektury - od rzeźb i instalacji artystycznych, przez dekoracyjne panele i moduły ścienne z reliefem, po podświetlane sufity oraz elementy fasad i witryn.' },
             ].map(({ title, desc }) => (
               <li class="flex gap-4">
                 <div class="flex-shrink-0 mt-1 text-glass-white">
@@ -119,11 +119,11 @@ const domLayout   = getMasonryLayout(domProjects);
             {firmaLayout.left.map((p, i) => (
               <button
                 class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.image, { width: 900, crop: 'fill' })}', '${p.data.title}')`}
+                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
                 aria-label={`Powiększ: ${p.data.title}`}
               >
                 <img
-                  src={cloudinaryUrl(p.data.image, { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
+                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
                   alt={p.data.title}
                   class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -136,14 +136,13 @@ const domLayout   = getMasonryLayout(domProjects);
           <div class="w-full lg:w-1/2 p-4">
             <button
               class="block w-full h-full overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-              x-on:click={`open('${cloudinaryUrl(firmaLayout.center.data.image, { width: 1200, crop: 'fill' })}', '${firmaLayout.center.data.title}')`}
+              x-on:click={`open('${cloudinaryUrl(firmaLayout.center.data.images[0], { width: 1200, crop: 'fill' })}', '${firmaLayout.center.data.title}')`}
               aria-label={`Powiększ: ${firmaLayout.center.data.title}`}
             >
               <img
-                src={cloudinaryUrl(firmaLayout.center.data.image, { width: 800, aspectRatio: '3:4', crop: 'fill' })}
+                src={cloudinaryUrl(firmaLayout.center.data.images[0], { width: 800, aspectRatio: '1:1', crop: 'fill' })}
                 alt={firmaLayout.center.data.title}
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                style="min-height: 500px;"
                 loading="lazy"
                 decoding="async"
               />
@@ -154,11 +153,11 @@ const domLayout   = getMasonryLayout(domProjects);
             {firmaLayout.right.map((p) => (
               <button
                 class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.image, { width: 900, crop: 'fill' })}', '${p.data.title}')`}
+                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
                 aria-label={`Powiększ: ${p.data.title}`}
               >
                 <img
-                  src={cloudinaryUrl(p.data.image, { width: 400, aspectRatio: '1:1', crop: 'fill' })}
+                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: '1:1', crop: 'fill' })}
                   alt={p.data.title}
                   class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -197,7 +196,7 @@ const domLayout   = getMasonryLayout(domProjects);
   {/* ── Sekcja 3 — CTA dla firm ─────────────────────────────────── */}
   <SectionCta
     title="Realizujemy projekty dla firm, hoteli i architektów"
-    description="Hotele, restauracje, biura, przestrzenie eventowe. Każda realizacja powstaje w pracowni od podstaw — ręcznie, według Twoich wymagań i w skali, której potrzebujesz."
+    description="Hotele, restauracje, biura, przestrzenie eventowe. Każda realizacja powstaje w pracowni od podstaw - ręcznie, według Twoich wymagań i w skali, której potrzebujesz."
     ctaLabel="Opisz nam swój projekt"
   />
 
@@ -294,11 +293,11 @@ const domLayout   = getMasonryLayout(domProjects);
             {domLayout.left.map((p, i) => (
               <button
                 class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.image, { width: 900, crop: 'fill' })}', '${p.data.title}')`}
+                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
                 aria-label={`Powiększ: ${p.data.title}`}
               >
                 <img
-                  src={cloudinaryUrl(p.data.image, { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
+                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
                   alt={p.data.title}
                   class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -311,14 +310,13 @@ const domLayout   = getMasonryLayout(domProjects);
           <div class="w-full lg:w-1/2 p-4">
             <button
               class="block w-full h-full overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-              x-on:click={`open('${cloudinaryUrl(domLayout.center.data.image, { width: 1200, crop: 'fill' })}', '${domLayout.center.data.title}')`}
+              x-on:click={`open('${cloudinaryUrl(domLayout.center.data.images[0], { width: 1200, crop: 'fill' })}', '${domLayout.center.data.title}')`}
               aria-label={`Powiększ: ${domLayout.center.data.title}`}
             >
               <img
-                src={cloudinaryUrl(domLayout.center.data.image, { width: 800, aspectRatio: '3:4', crop: 'fill' })}
+                src={cloudinaryUrl(domLayout.center.data.images[0], { width: 800, aspectRatio: '1:1', crop: 'fill' })}
                 alt={domLayout.center.data.title}
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                style="min-height: 500px;"
                 loading="lazy"
                 decoding="async"
               />
@@ -329,11 +327,11 @@ const domLayout   = getMasonryLayout(domProjects);
             {domLayout.right.map((p) => (
               <button
                 class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.image, { width: 900, crop: 'fill' })}', '${p.data.title}')`}
+                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
                 aria-label={`Powiększ: ${p.data.title}`}
               >
                 <img
-                  src={cloudinaryUrl(p.data.image, { width: 400, aspectRatio: '1:1', crop: 'fill' })}
+                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: '1:1', crop: 'fill' })}
                   alt={p.data.title}
                   class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"

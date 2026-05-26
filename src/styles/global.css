@@ -380,4 +380,15 @@
   font-family: var(--font-mono);
   }
 
+  /* GTranslate widget — custom style */
+.gt_float_switcher {
+  font-family: var(--font-sans) !important;
+  font-size: 0.875rem !important;
+  border-radius: 25px !important;
+  color: var(--color-glass-muted) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--color-glass-border) !important;
+  transition: border-color 0.2s !important;
+}
+
 }
