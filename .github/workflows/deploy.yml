@@ -39,6 +39,7 @@ jobs:
           PUBLIC_FORMSPARK_FORM_ID:     ${{ vars.PUBLIC_FORMSPARK_FORM_ID }}
           # Secrets — zaszyfrowane, niewidoczne w logach
           PUBLIC_CLOUDINARY_API_KEY:    ${{ secrets.PUBLIC_CLOUDINARY_API_KEY }}
+          PUBLIC_TURNSTILE_SITE_KEY:    ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
