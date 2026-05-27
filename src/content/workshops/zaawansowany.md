@@ -1,5 +1,5 @@
 ---
-title: "Warsztaty ze szkła dmuchanego — poziom zaawansowany"
+title: "Warsztaty ze szkła dmuchanego - poziom zaawansowany"
 description: "Dzięki pracy na drumli stworzysz szklankę z uchem, kieliszek na nóżce lub inny przedmiot do 30 cm wysokości."
 duration: "3 godziny"
 maxPersons: 5

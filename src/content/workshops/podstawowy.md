@@ -1,5 +1,5 @@
 ---
-title: "Warsztaty ze szkła dmuchanego — poziom podstawowy"
+title: "Warsztaty ze szkła dmuchanego - poziom podstawowy"
 description: "Pod okiem instruktorów stworzysz własny wazon, karafkę lub szklankę, samodzielnie odbijesz ją z piszczeli i umieścisz w odprężarce."
 duration: "3 godziny"
 maxPersons: 6
