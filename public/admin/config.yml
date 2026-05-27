@@ -2,7 +2,6 @@ backend:
   name: github
   repo: mrglassproject/mrglassproject.github.io
   branch: main
-  base_url: https://sveltia-cms-auth.pages.dev
 
 media_library:
   name: cloudinary
@@ -32,7 +31,11 @@ collections:
       - { name: title,     label: Tytuł,        widget: string }
       - { name: date,      label: Data,          widget: datetime, format: "YYYY-MM-DD" }
       - { name: excerpt,   label: Zajawka,       widget: text }
-      - { name: cover,     label: Zdjęcie cover, widget: image, media_library: { name: cloudinary } }
+      - name: cover
+        label: Zdjęcie cover
+        widget: image
+        media_library:
+          name: cloudinary
       - { name: published, label: Opublikowany,  widget: boolean, default: false }
       - { name: body,      label: Treść,         widget: markdown }
 
@@ -43,7 +46,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { name: title,       label: Tytuł,        widget: string }
+      - { name: title, label: Tytuł, widget: string }
       - name: category
         label: Kategoria
         widget: select
@@ -53,13 +56,20 @@ collections:
       - name: images
         label: Zdjęcia
         widget: list
-        field: { name: image, label: Zdjęcie, widget: image, media_library: { name: cloudinary } }
-      - { name: description, label: Opis,              widget: text,    required: false }
-      - { name: year,        label: Rok,               widget: number,  required: false }
-      - { name: dimensions,  label: Wymiary,           widget: text,    required: false }
-      - { name: order,       label: Kolejność,         widget: number,  default: 0 }
-      - { name: published,   label: Opublikowana,      widget: boolean, default: true }
-      - { name: body,        label: Opis rozszerzony,  widget: markdown, required: false }
+        media_library:
+          name: cloudinary
+        field:
+          name: image
+          label: Zdjęcie
+          widget: image
+          media_library:
+            name: cloudinary
+      - { name: description, label: Opis,             widget: text,    required: false }
+      - { name: year,        label: Rok,              widget: number,  required: false }
+      - { name: dimensions,  label: Wymiary,          widget: text,    required: false }
+      - { name: order,       label: Kolejność,        widget: number,  default: 0 }
+      - { name: published,   label: Opublikowana,     widget: boolean, default: true }
+      - { name: body,        label: Opis rozszerzony, widget: markdown, required: false }
 
   - name: workshops
     label: Warsztaty
@@ -68,13 +78,13 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { name: title,          label: Tytuł,              widget: string }
-      - { name: description,    label: Opis,               widget: text }
-      - { name: duration,       label: Czas trwania,       widget: string }
-      - { name: maxPersons,     label: Maks. osób,         widget: number }
-      - { name: price,          label: Cena (zł),          widget: number }
-      - { name: pricePair,      label: Cena dla 2 osób,    widget: number,  required: false }
-      - { name: pricePairLabel, label: Etykieta pary,      widget: string,  required: false }
+      - { name: title,          label: Tytuł,               widget: string }
+      - { name: description,    label: Opis,                widget: text }
+      - { name: duration,       label: Czas trwania,        widget: string }
+      - { name: maxPersons,     label: Maks. osób,          widget: number }
+      - { name: price,          label: Cena (zł),           widget: number }
+      - { name: pricePair,      label: Cena dla 2 osób,     widget: number,  required: false }
+      - { name: pricePairLabel, label: Etykieta pary,       widget: string,  required: false }
       - name: level
         label: Poziom
         widget: select
@@ -83,13 +93,13 @@ collections:
           - { label: Podstawowy,   value: podstawowy }
           - { label: Zaawansowany, value: zaawansowany }
           - { label: Indywidualny, value: indywidualny }
-      - { name: setmoreUrl,  label: Link Setmore,       widget: string }
+      - { name: setmoreUrl,  label: Link Setmore,        widget: string }
       - { name: stripeUrl1,  label: Stripe link 1 osoba, widget: string, required: false }
       - { name: stripeUrl2,  label: Stripe link 2 osoby, widget: string, required: false }
-      - { name: active,      label: Aktywny,            widget: boolean, default: true }
-      - { name: featured,    label: Wyróżniony,         widget: boolean, default: false }
-      - { name: order,       label: Kolejność,          widget: number,  default: 0 }
-      - { name: body,        label: Opis rozszerzony,   widget: markdown, required: false }
+      - { name: active,      label: Aktywny,             widget: boolean, default: true }
+      - { name: featured,    label: Wyróżniony,          widget: boolean, default: false }
+      - { name: order,       label: Kolejność,           widget: number,  default: 0 }
+      - { name: body,        label: Opis rozszerzony,    widget: markdown, required: false }
 
   - name: testimonials
     label: Opinie
@@ -111,12 +121,12 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { name: title,       label: Tytuł,          widget: string }
-      - { name: description, label: Opis,            widget: text }
-      - { name: price,       label: Cena (zł),       widget: number }
-      - { name: buyUrl,      label: Link do zakupu,  widget: string, required: false }
-      - { name: active,      label: Aktywny,         widget: boolean, default: true }
-      - { name: order,       label: Kolejność,       widget: number,  default: 0 }
+      - { name: title,       label: Tytuł,           widget: string }
+      - { name: description, label: Opis,             widget: text }
+      - { name: price,       label: Cena (zł),        widget: number }
+      - { name: buyUrl,      label: Link do zakupu,   widget: string, required: false }
+      - { name: active,      label: Aktywny,          widget: boolean, default: true }
+      - { name: order,       label: Kolejność,        widget: number,  default: 0 }
       - { name: body,        label: Opis rozszerzony, widget: markdown, required: false }
 
   - name: faq
@@ -148,16 +158,16 @@ collections:
         label: Polityka prywatności
         file: src/content/pages/privacy.md
         fields:
-          - { name: title,     label: Tytuł,               widget: string }
-          - { name: updatedAt, label: Data aktualizacji,   widget: string, required: false }
-          - { name: body,      label: Treść,               widget: markdown }
+          - { name: title,     label: Tytuł,             widget: string }
+          - { name: updatedAt, label: Data aktualizacji,  widget: string, required: false }
+          - { name: body,      label: Treść,              widget: markdown }
       - name: terms
         label: Regulamin
         file: src/content/pages/terms.md
         fields:
-          - { name: title,     label: Tytuł,               widget: string }
-          - { name: updatedAt, label: Data aktualizacji,   widget: string, required: false }
-          - { name: body,      label: Treść,               widget: markdown }
+          - { name: title,     label: Tytuł,             widget: string }
+          - { name: updatedAt, label: Data aktualizacji,  widget: string, required: false }
+          - { name: body,      label: Treść,              widget: markdown }
 
   - name: settings
     label: Ustawienia
