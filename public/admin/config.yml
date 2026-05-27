@@ -185,8 +185,8 @@ collections:
           - name: ofertaFirmy
             label: Oferta — realizacje dla firm (5 slugów)
             widget: list
-            field: { name: slug, label: Slug projektu, widget: string }
+            field: { name: item, label: Slug projektu, widget: string }
           - name: ofertaDom
             label: Oferta — realizacje dla domu (5 slugów)
             widget: list
-            field: { name: slug, label: Slug projektu, widget: string }
+            field: { name: item, label: Slug projektu, widget: string }
