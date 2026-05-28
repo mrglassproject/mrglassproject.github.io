@@ -7,7 +7,7 @@ media_library:
   name: cloudinary
   config:
     cloud_name: mrglassproject
-    api_key: 281332465646415
+    api_key: 822727937946891
     use_filename: true
     unique_filename: false
     overwrite: true
