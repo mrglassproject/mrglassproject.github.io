@@ -3,17 +3,16 @@ backend:
   repo: mrglassproject/mrglassproject.github.io
   branch: main
 
-media_library:
-  name: cloudinary
-  config:
-    cloud_name: mrglassproject
-    api_key: 822727937946891
-    use_filename: true
-    unique_filename: false
-    overwrite: true
-    default_transformations:
-      - - fetch_format: auto
-          quality: auto
+media_libraries:
+  cloudinary:
+    config:
+      cloud_name: mrglassproject
+      api_key: 822727937946891
+      default_transformations:
+        - - quality: auto
+            fetch_format: auto
+    output_filename_only: false
+    use_transformations: true
 
 media_folder: public/uploads
 public_folder: /uploads
@@ -56,14 +55,21 @@ collections:
       - name: images
         label: Zdjęcia
         widget: list
+        thumbnail: image
         media_library:
           name: cloudinary
         field:
           name: image
           label: Zdjęcie
           widget: image
-          media_library:
-            name: cloudinary
+          media_libraries:
+              cloudinary:
+                config:
+                  default_transformations:
+                    - - quality: auto
+                        fetch_format: auto
+                output_filename_only: false
+                use_transformations: true
       - { name: description, label: Opis,             widget: text,    required: false }
       - { name: year,        label: Rok,              widget: number,  required: false }
       - { name: dimensions,  label: Wymiary,          widget: text,    required: false }
