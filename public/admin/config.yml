@@ -8,7 +8,6 @@ media_libraries:
     config:
       cloud_name: "mrglassproject"
       api_key: "822727937946891"
-      username: "glassprojectwarszawa@gmail.com"
       default_transformations:
         - - quality: auto
             fetch_format: auto
