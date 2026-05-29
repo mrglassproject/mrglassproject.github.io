@@ -16,7 +16,7 @@ export default defineConfig({
   output: 'static',
   vite: {
   server: {
-    open: '/mrglassproject-com',
+    open: '/',
   },
   plugins: [tailwindcss()],
 },
