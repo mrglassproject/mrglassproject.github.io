@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionCta from '../components/ui/SectionCta.astro';
 import { cloudinaryUrl, cloudinarySrcset } from '../utils/cloudinary';
+import SectionVideoWorkshops from '../components/ui/SectionVideoWorkshops.astro';
 
 const allWorkshops = await getCollection('workshops');
 const workshops = allWorkshops
@@ -95,6 +96,8 @@ const testimonialsData = testimonials.map(t => ({
     </div>
   </div>
 </section>
+
+<SectionVideoWorkshops publicId="Warsztaty-Mr-Glass-Project-Compressed" />
 
   {/* ── Sekcja 2 — Opinie ───────────────────────────────────────── */}
   <section class="section-py">
