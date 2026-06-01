@@ -1,6 +1,6 @@
 ---
-title: "Regulamin"
-updatedAt: "2026-01-01"
+title: Regulamin
+updatedAt: 2026-06-01
 ---
 
 ## 1. Postanowienia ogólne
