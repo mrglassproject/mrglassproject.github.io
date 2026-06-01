@@ -1,6 +1,6 @@
 ---
 title: "Polityka prywatności"
-updatedAt: "2026-01-01"
+updatedAt: "2026-06-01"
 ---
 
 ## Obowiązek informacyjny wobec klientów i ich reprezentantów
