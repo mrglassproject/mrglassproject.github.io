@@ -58,6 +58,8 @@ collections:
           - name: image
             label: Zdjęcie
             widget: image
+            media_libraries:
+              default: false
           - name: alt
             label: Tekst ALT
             widget: string
