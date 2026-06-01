@@ -14,9 +14,9 @@ media_libraries:
     output_filename_only: false
     use_transformations: true
 
-media_folder: public/uploads
+media_folder: /public/uploads
 public_folder: /uploads
-locale: pl
+#locale: pl
 
 collections:
 
