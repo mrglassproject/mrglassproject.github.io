@@ -160,7 +160,7 @@ collections:
         file: src/content/pages/privacy.md
         fields:
           - { name: title,     label: Tytuł,             widget: string }
-          - { name: updatedAt, label: Data aktualizacji, widget: datetime, format: "YYYY-MM-DD" }
+          - { name: updatedAt, label: Data aktualizacji,  widget: string, required: false }
           - { name: body,      label: Treść,              widget: markdown }
       - name: terms
         label: Regulamin
