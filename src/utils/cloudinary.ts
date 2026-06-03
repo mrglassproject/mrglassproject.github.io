@@ -10,21 +10,49 @@ interface TransformOptions {
   aspectRatio?: string;
 }
 
-export function cloudinaryUrl(publicId: string, opts: TransformOptions = {}): string {
+export function cloudinaryUrl(publicIdOrUrl: string, opts: TransformOptions = {}): string {
+  if (!publicIdOrUrl) return '';
+
   const {
-    width, height, crop = 'fill', gravity = 'auto',
-    format = 'auto', quality = 'auto', aspectRatio,
+    width,
+    height,
+    crop = 'fill',
+    gravity = 'auto',
+    format = 'auto',
+    quality = 'auto',
+    aspectRatio,
   } = opts;
 
   const t: string[] = [`f_${format}`, `q_${quality}`];
-  if (width)       t.push(`w_${width}`);
-  if (height)      t.push(`h_${height}`);
+
+  if (width) t.push(`w_${width}`);
+  if (height) t.push(`h_${height}`);
   if (aspectRatio) t.push(`ar_${aspectRatio}`);
+
   if (width || height || aspectRatio) {
     t.push(`c_${crop}`, `g_${gravity}`);
   }
 
-  return `${CLOUDINARY.baseUrl}/${CLOUDINARY.cloudName}/image/upload/${t.join(',')}/${publicId}`;
+  const transform = t.join(',');
+
+  // Nowy format z CMS: pełny URL Cloudinary
+  if (publicIdOrUrl.startsWith('https://res.cloudinary.com/')) {
+    return publicIdOrUrl.replace(
+      '/image/upload/',
+      `/image/upload/${transform}/`
+    );
+  }
+
+  // Awaryjnie: inny pełny URL — zwracamy bez przebudowy
+  if (
+    publicIdOrUrl.startsWith('http://') ||
+    publicIdOrUrl.startsWith('https://')
+  ) {
+    return publicIdOrUrl;
+  }
+
+  // Stary format: sam public ID
+  return `${CLOUDINARY.baseUrl}/${CLOUDINARY.cloudName}/image/upload/${transform}/${publicIdOrUrl}`;
 }
 
 export function cloudinarySrcset(

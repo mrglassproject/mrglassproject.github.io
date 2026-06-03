@@ -12,7 +12,7 @@ media_libraries:
         - - quality: auto
             fetch_format: auto
     output_filename_only: false
-    use_transformations: true
+    use_transformations: false
 
 media_folder: /public/uploads
 public_folder: /uploads
