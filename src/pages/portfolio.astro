@@ -9,19 +9,32 @@ const sorted = allProjects
   .filter(p => p.data.published !== false)
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
-// Serializujemy dane dla Alpine
-const projects = sorted.map(p => ({
-  id:          p.id,
-  title:       p.data.title,
-  description: p.data.description ?? null,
-  dimensions:  p.data.dimensions ?? null,
-  category:    p.data.category,
-  thumb:       cloudinaryUrl(p.data.images[0], { width: 600,  aspectRatio: '9:16', crop: 'fill' }),
-  thumbSq:     cloudinaryUrl(p.data.images[0], { width: 600,  aspectRatio: '1:1',  crop: 'fill' }),
-  images:      p.data.images.map((id: string) =>
-                 cloudinaryUrl(id, { width: 1400, crop: 'fill' })
-               ),
-}));
+const projects = sorted.map(p => {
+  const images = p.data.images ?? [];
+  const firstImage = images[0]?.image;
+
+  return {
+    id:          p.id,
+    title:       p.data.title,
+    description: p.data.description ?? null,
+    dimensions:  p.data.dimensions ?? null,
+    category:    p.data.category,
+
+    thumb: firstImage
+      ? cloudinaryUrl(firstImage, { width: 600, aspectRatio: '9:16', crop: 'fill' })
+      : null,
+
+    thumbSq: firstImage
+      ? cloudinaryUrl(firstImage, { width: 600, aspectRatio: '1:1', crop: 'fill' })
+      : null,
+
+    images: images.map((item) =>
+      cloudinaryUrl(item.image, { width: 1400, crop: 'fill' })
+    ),
+
+    imageAlts: images.map((item) => item.alt || p.data.title),
+  };
+});
 ---
 
 <BaseLayout

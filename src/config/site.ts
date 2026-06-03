@@ -1,6 +1,8 @@
+import settingsData from '../data/settings.json';
+
 export const SITE = {
   name: 'MR Glass Project',
-  fullName: 'Pracownia Szkła Artystycznego Maciej Rafalski Glass Project',
+  fullName: 'Pracownia Szkła Artystycznego Maciej Rafalski MR Glass Project',
   description: 'Pracownia szkła artystycznego w Warszawie. Projekty na zamówienie dla firm, hoteli i architektów.',
   url: 'https://mrglassproject.github.io',
   finalUrl: 'https://mrglassproject.com',
@@ -12,17 +14,17 @@ export const SITE = {
 } as const;
 
 export const CONTACT = {
-  address: 'ul. Grójecka 79 lok. 7',
-  city: '02-094 Warszawa',
+  address:      settingsData.address,
+  city:         settingsData.city,
+  phone:        settingsData.phone,
+  phoneHref:    `tel:${settingsData.phone.replace(/\s/g, '')}`,
+  email:        settingsData.email,
+  emailHref:    `mailto:${settingsData.email}`,
+  hours:        settingsData.hours,
   region: 'mazowieckie',
   country: 'PL',
-  phone: '+48 500 603 151',
-  phoneHref: 'tel:+48500603151',
-  email: 'mrglassproject@gmail.com',
-  emailHref: 'mailto:mrglassproject@gmail.com',
   nip: '8762371621',
   regon: '387628069',
-  hours: 'Poniedziałek – Piątek 8:00–16:00',
   hoursSchema: 'Mo-Fr 08:00-16:00',
   lat: 52.2121751,
   lng: 20.9779826,
@@ -57,6 +59,7 @@ export const NAV = [
   { label: 'Pracownia',     href: '/workshop' },
   { label: 'Realizacje',    href: '/portfolio' },
   { label: 'Oferta',        href: '/services' },
+  { label: 'Blog',          href: '/posts' },
   { label: 'Vouchery',        href: '/vouchers' },
   { label: 'FAQ',           href: '/faq' },
   { label: 'Kontakt',       href: '/contact' },

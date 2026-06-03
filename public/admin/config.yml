@@ -28,6 +28,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { name: title,     label: Tytuł,        widget: string }
+      - { name: author, label: Autor, widget: string, default: MR Glass Project, required: false }
       - { name: date,      label: Data,          widget: datetime, format: "YYYY-MM-DD" }
       - { name: excerpt,   label: Zajawka,       widget: text }
       - name: cover
@@ -53,11 +54,14 @@ collections:
       - name: images
         label: Zdjęcia
         widget: list
+        label_singular: Zdjęcie
         thumbnail: image
+        collapsed: true
         fields:
           - name: image
             label: Zdjęcie
             widget: image
+            required: true
             media_libraries:
               default: false
           - name: alt
@@ -114,21 +118,6 @@ collections:
       - { name: rating,  label: Ocena (1-5),     widget: number, min: 1, max: 5, default: 5 }
       - { name: date,    label: Data,            widget: string }
       - { name: source,  label: Źródło,          widget: string, default: Google, required: false }
-
-  - name: vouchers
-    label: Vouchery
-    label_singular: Voucher
-    folder: src/content/vouchers
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { name: title,       label: Tytuł,           widget: string }
-      - { name: description, label: Opis,             widget: text }
-      - { name: price,       label: Cena (zł),        widget: number }
-      - { name: buyUrl,      label: Link do zakupu,   widget: string, required: false }
-      - { name: active,      label: Aktywny,          widget: boolean, default: true }
-      - { name: order,       label: Kolejność,        widget: number,  default: 0 }
-      - { name: body,        label: Opis rozszerzony, widget: markdown, required: false }
 
   - name: faq
     label: FAQ

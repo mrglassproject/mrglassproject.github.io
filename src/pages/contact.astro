@@ -48,12 +48,13 @@ const formAction = `${FORMSPARK.url}/${FORMSPARK.formId}`;
                 </svg>
               </div>
               <h2 class="mb-2 text-xl font-medium text-gradient font-heading">Kontakt</h2>
-              <a href={CONTACT.emailHref} class="block text-glass-muted hover:text-glass-white leading-loose transition-colors duration-200">
-                {CONTACT.email}
-              </a>
               <a href="#"
               x-data
               x-on:click="window.location.href = 'mai' + 'lto:' + 'mrglassproject' + '@' + 'gmail.com'"
+              class="block text-glass-muted hover:text-glass-white leading-loose transition-colors duration-200">
+                {CONTACT.email}
+              </a>
+              <a href={CONTACT.phoneHref}
               class="block text-glass-muted hover:text-glass-white leading-loose transition-colors duration-200"
               >
                 {CONTACT.phone}

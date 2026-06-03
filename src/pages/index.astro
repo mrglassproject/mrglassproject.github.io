@@ -25,14 +25,27 @@ const domProjects = sorted
   .slice(0, 8);
 const projects      = [...firmaProjects, ...domProjects];
 
-const projectsData = projects.map(p => ({
-  id:       p.id,
-  title:    p.data.title,
-  category: p.data.category,
-  thumb:    cloudinaryUrl(p.data.images[0], { width: 600,  aspectRatio: '9:16', crop: 'fill' }),
-  thumbSq:  cloudinaryUrl(p.data.images[0], { width: 600,  aspectRatio: '1:1',  crop: 'fill' }),
-  full:     cloudinaryUrl(p.data.images[0], { width: 1400, crop: 'fill' }),
-}));
+const projectsData = projects
+  .map((p) => {
+    const firstImage = p.data.images?.[0];
+
+    if (!firstImage?.image) {
+      return null;
+    }
+
+    const alt = firstImage.alt || p.data.title;
+
+    return {
+      id:       p.id,
+      title:    p.data.title,
+      category: p.data.category,
+      alt,
+      thumb:    cloudinaryUrl(firstImage.image, { width: 600,  aspectRatio: '9:16', crop: 'fill' }),
+      thumbSq:  cloudinaryUrl(firstImage.image, { width: 600,  aspectRatio: '1:1',  crop: 'fill' }),
+      full:     cloudinaryUrl(firstImage.image, { width: 1400, crop: 'fill' }),
+    };
+  })
+  .filter(Boolean);
 
 // Zdjęcia sekcji narracyjnych
 const FOTO_HERO  = 'maciej-rafalski-glass-project-warszawa-fot-home-hero-fot-0';
@@ -261,19 +274,19 @@ const b2bCards = [
           <template x-for="p in filtered" x-bind:key="p.id">
             <button
               class="group relative overflow-hidden rounded-xl border border-glass-border cursor-zoom-in"
-              x-on:click="open(p.full, p.title)"
+              x-on:click="open(p.full, p.alt)"
               x-bind:aria-label="`Powiększ: ${p.title}`"
             >
               <img
                 x-bind:src="p.thumbSq"
-                x-bind:alt="p.title"
+                x-bind:alt="p.alt"
                 class="block md:hidden w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
                 decoding="async"
               />
               <img
                 x-bind:src="p.thumb"
-                x-bind:alt="p.title"
+                x-bind:alt="p.alt"
                 class="hidden md:block w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
                 decoding="async"

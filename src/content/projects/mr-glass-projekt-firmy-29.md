@@ -2,7 +2,8 @@
 title: "mr-glass-projekt-warszawa-portfolio-prace-dla-firm-fot-29"
 category: "dla-firm"
 images:
-  - "mr-glass-projekt-warszawa-portfolio-prace-dla-firm-fot-29"
+  - image: "mr-glass-projekt-warszawa-portfolio-prace-dla-firm-fot-29"
+    alt: ""
 description:
 year:
 order:

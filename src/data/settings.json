@@ -1,8 +1,9 @@
 {
   "phone": "+48 500 603 151",
   "email": "mrglassproject@gmail.com",
-  "address": "ul. Grójecka 79 lok. 7, 02-094 Warszawa",
-  "hours": "Poniedziałek - Piątek 8:00 - 16:00",
+  "address": "ul. Grójecka 79 lok. 7",
+  "city": "02-094 Warszawa",
+  "hours": "Poniedziałek - Piątek 8:00-16:00",
   "social": {
     "facebook": "https://www.facebook.com/p/Mrglassproject-100063557379907/",
     "instagram": "https://www.instagram.com/maciejrafalski_glassproject/",

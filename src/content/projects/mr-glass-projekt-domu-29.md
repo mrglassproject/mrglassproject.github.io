@@ -2,7 +2,8 @@
 title: "mr-glass-projekt-warszawa-portfolio-prace-dla-domu-fot-29"
 category: "dla-domu"
 images:
-  - "mr-glass-projekt-warszawa-portfolio-prace-dla-domu-fot-29"
+  - image: "mr-glass-projekt-warszawa-portfolio-prace-dla-domu-fot-29"
+    alt: ""
 description:
 year:
 order:

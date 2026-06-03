@@ -5,6 +5,7 @@ const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
     title:     z.string(),
+    author: z.string().default('MR Glass Project'),
     date:      z.coerce.date(),
     excerpt:   z.string(),
     cover:     z.string(),
@@ -25,7 +26,12 @@ const projects = defineCollection({
   schema: z.object({
     title:       z.string(),
     category:    z.enum(['dla-domu', 'dla-firm']),
-    images:      z.array(z.string()),
+    images: z.array(
+    z.object({
+    image: z.string(),
+    alt: z.string().optional(),
+     })
+    ),
     description: z.string().optional().nullable(),
     year:        z.coerce.number().optional().nullable(),
     dimensions:  z.string().optional().nullable(),
@@ -65,17 +71,6 @@ const testimonials = defineCollection({
   }),
 });
 
-const vouchers = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/vouchers' }),
-  schema: z.object({
-    title:       z.string(),
-    description: z.string(),
-    price:       z.number(),
-    buyUrl:      z.string().optional(),
-    active:      z.boolean().default(true),
-    order:       z.number().default(0),
-  }),
-});
 
 const faq = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/faq' }),
@@ -101,7 +96,6 @@ export const collections = {
   projects,
   workshops,
   testimonials,
-  vouchers,
   faq,
   voucherfaq: voucherFaq,
 };

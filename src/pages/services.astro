@@ -37,6 +37,18 @@ function getMasonryLayout(projects: typeof firmaProjects) {
   };
 }
 
+function getFirstProjectImage(project) {
+  return project?.data?.images?.[0] ?? null;
+}
+
+function getProjectImageId(project) {
+  return getFirstProjectImage(project)?.image ?? '';
+}
+
+function getProjectImageAlt(project) {
+  return getFirstProjectImage(project)?.alt || project?.data?.title || '';
+}
+
 const firmaLayout = getMasonryLayout(firmaProjects);
 const domLayout   = getMasonryLayout(domProjects);
 ---
@@ -116,32 +128,37 @@ const domLayout   = getMasonryLayout(domProjects);
           x-data="{ lightbox: false, current: '', currentAlt: '', open(src, alt) { this.current = src; this.currentAlt = alt; this.lightbox = true; }, close() { this.lightbox = false; } }"
         >
           <div class="w-full lg:w-1/4 p-4 flex flex-col gap-4">
-            {firmaLayout.left.map((p, i) => (
-              <button
-                class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
-                aria-label={`Powiększ: ${p.data.title}`}
-              >
+            {firmaLayout.left.map((p, i) => {
+              const imageId = getProjectImageId(p);
+              const imageAlt = getProjectImageAlt(p);
+
+              return (
+                <button
+                  class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
+                  x-on:click={`open('${cloudinaryUrl(imageId, { width: 900, crop: 'fill' })}', '${imageAlt}')`}
+                  aria-label={`Powiększ: ${p.data.title}`}
+                >
                 <img
-                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
-                  alt={p.data.title}
+                  src={cloudinaryUrl(imageId, { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
+                  alt={imageAlt}
                   class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
                 />
-              </button>
-            ))}
+                </button>
+                      );
+            })}
           </div>
 
           <div class="w-full lg:w-1/2 p-4">
             <button
               class="block w-full h-full overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-              x-on:click={`open('${cloudinaryUrl(firmaLayout.center.data.images[0], { width: 1200, crop: 'fill' })}', '${firmaLayout.center.data.title}')`}
+              x-on:click={`open('${cloudinaryUrl(getProjectImageId(firmaLayout.center), { width: 1200, crop: 'fill' })}', '${getProjectImageAlt(firmaLayout.center)}')`}
               aria-label={`Powiększ: ${firmaLayout.center.data.title}`}
             >
               <img
-                src={cloudinaryUrl(firmaLayout.center.data.images[0], { width: 800, aspectRatio: '1:1', crop: 'fill' })}
-                alt={firmaLayout.center.data.title}
+                src={cloudinaryUrl(getProjectImageId(firmaLayout.center), { width: 800, aspectRatio: '1:1', crop: 'fill' })}
+                alt={getProjectImageAlt(firmaLayout.center)}
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
                 decoding="async"
@@ -150,21 +167,26 @@ const domLayout   = getMasonryLayout(domProjects);
           </div>
 
           <div class="w-full lg:w-1/4 p-4 flex flex-col gap-4">
-            {firmaLayout.right.map((p) => (
-              <button
-                class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
-                aria-label={`Powiększ: ${p.data.title}`}
-              >
-                <img
-                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: '1:1', crop: 'fill' })}
-                  alt={p.data.title}
-                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            ))}
+            {firmaLayout.right.map((p) => {
+              const imageId = getProjectImageId(p);
+              const imageAlt = getProjectImageAlt(p);
+
+              return (
+                <button
+                  class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
+                  x-on:click={`open('${cloudinaryUrl(imageId, { width: 900, crop: 'fill' })}', '${imageAlt}')`}
+                  aria-label={`Powiększ: ${p.data.title}`}
+                >
+                  <img
+                    src={cloudinaryUrl(imageId, { width: 400, aspectRatio: '1:1', crop: 'fill' })}
+                    alt={imageAlt}
+                    class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+                      );
+                    })}
           </div>
 
           <div
@@ -290,32 +312,37 @@ const domLayout   = getMasonryLayout(domProjects);
           x-data="{ lightbox: false, current: '', currentAlt: '', open(src, alt) { this.current = src; this.currentAlt = alt; this.lightbox = true; }, close() { this.lightbox = false; } }"
         >
           <div class="w-full lg:w-1/4 p-4 flex flex-col gap-4">
-            {domLayout.left.map((p, i) => (
-              <button
-                class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
-                aria-label={`Powiększ: ${p.data.title}`}
-              >
-                <img
-                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
-                  alt={p.data.title}
-                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            ))}
+            {domLayout.left.map((p, i) => {
+              const imageId = getProjectImageId(p);
+              const imageAlt = getProjectImageAlt(p);
+
+              return (
+                <button
+                  class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
+                  x-on:click={`open('${cloudinaryUrl(imageId, { width: 900, crop: 'fill' })}', '${imageAlt}')`}
+                  aria-label={`Powiększ: ${p.data.title}`}
+                >
+                  <img
+                    src={cloudinaryUrl(imageId, { width: 400, aspectRatio: i === 0 ? '4:5' : '4:3', crop: 'fill' })}
+                    alt={imageAlt}
+                    class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+                      );
+                    })}
           </div>
 
           <div class="w-full lg:w-1/2 p-4">
             <button
               class="block w-full h-full overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-              x-on:click={`open('${cloudinaryUrl(domLayout.center.data.images[0], { width: 1200, crop: 'fill' })}', '${domLayout.center.data.title}')`}
+              x-on:click={`open('${cloudinaryUrl(getProjectImageId(domLayout.center), { width: 1200, crop: 'fill' })}', '${getProjectImageAlt(domLayout.center)}')`}
               aria-label={`Powiększ: ${domLayout.center.data.title}`}
             >
               <img
-                src={cloudinaryUrl(domLayout.center.data.images[0], { width: 800, aspectRatio: '1:1', crop: 'fill' })}
-                alt={domLayout.center.data.title}
+                src={cloudinaryUrl(getProjectImageId(domLayout.center), { width: 800, aspectRatio: '1:1', crop: 'fill' })}
+                alt={getProjectImageAlt(domLayout.center)}
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
                 decoding="async"
@@ -324,21 +351,26 @@ const domLayout   = getMasonryLayout(domProjects);
           </div>
 
           <div class="w-full lg:w-1/4 p-4 flex flex-col gap-4">
-            {domLayout.right.map((p) => (
-              <button
-                class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
-                x-on:click={`open('${cloudinaryUrl(p.data.images[0], { width: 900, crop: 'fill' })}', '${p.data.title}')`}
-                aria-label={`Powiększ: ${p.data.title}`}
-              >
-                <img
-                  src={cloudinaryUrl(p.data.images[0], { width: 400, aspectRatio: '1:1', crop: 'fill' })}
-                  alt={p.data.title}
-                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            ))}
+            {domLayout.right.map((p) => {
+              const imageId = getProjectImageId(p);
+              const imageAlt = getProjectImageAlt(p);
+
+              return (
+                <button
+                  class="block overflow-hidden rounded-2xl border border-glass-border group cursor-zoom-in"
+                  x-on:click={`open('${cloudinaryUrl(imageId, { width: 900, crop: 'fill' })}', '${imageAlt}')`}
+                  aria-label={`Powiększ: ${p.data.title}`}
+                >
+                  <img
+                    src={cloudinaryUrl(imageId, { width: 400, aspectRatio: '1:1', crop: 'fill' })}
+                    alt={imageAlt}
+                    class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+                      );
+                    })}
           </div>
 
           <div
