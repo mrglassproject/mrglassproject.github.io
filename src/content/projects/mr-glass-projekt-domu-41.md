@@ -1,8 +1,9 @@
 ---
+
 title: "mr-glass-projekt-warszawa-portfolio-prace-dla-domu-fot-41"
 category: "dla-domu"
 images:
-  - image: "mr-glass-projekt-warszawa-portfolio-prace-dla-domu-fot-41"
+  - image: "https://res.cloudinary.com/mrglassproject/image/upload/mr-glass-projekt-warszawa-portfolio-prace-dla-domu-fot-41"
     alt: ""
 description:
 year:

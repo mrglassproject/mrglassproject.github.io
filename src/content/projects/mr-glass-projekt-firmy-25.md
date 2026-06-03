@@ -1,8 +1,9 @@
 ---
+
 title: "mr-glass-projekt-warszawa-portfolio-prace-dla-firm-fot-25"
 category: "dla-firm"
 images:
-  - image: "mr-glass-projekt-warszawa-portfolio-prace-dla-firm-fot-25"
+  - image: "https://res.cloudinary.com/mrglassproject/image/upload/mr-glass-projekt-warszawa-portfolio-prace-dla-firm-fot-25"
     alt: ""
 description:
 year:
