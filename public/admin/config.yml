@@ -146,14 +146,14 @@ collections:
         file: src/content/pages/privacy.md
         fields:
           - { name: title,     label: Tytuł,             widget: string }
-          - { name: updatedAt, label: Data aktualizacji,  widget: string, required: false }
+          - { name: updatedAt, label: Data aktualizacji,  widget: datetime, required: true, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
           - { name: body,      label: Treść,              widget: markdown }
       - name: terms
         label: Regulamin
         file: src/content/pages/terms.md
         fields:
           - { name: title,     label: Tytuł,             widget: string }
-          - { name: updatedAt, label: Data aktualizacji,  widget: string, required: false }
+          - { name: updatedAt, label: Data aktualizacji,  widget: datetime, required: true, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
           - { name: body,      label: Treść,              widget: markdown }
 
   - name: settings

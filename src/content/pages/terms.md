@@ -1,6 +1,6 @@
 ---
 title: Regulamin
-updatedAt: ''
+updatedAt: "2026-06-01"
 ---
 
 ## 1. Postanowienia ogólne

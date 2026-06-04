@@ -19,11 +19,13 @@ const { Content } = await render(entry);
 
         <h1 class="section-heading">{entry.data.title}</h1>
 
-        {entry.data.updatedAt && (
-          <p class="mb-8 text-sm text-glass-smoke">
-            Ostatnia aktualizacja: {new Date(entry.data.updatedAt).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}
+          <p class="mb-8 text-sm text-glass-muted">
+            Ostatnia aktualizacja: {entry.data.updatedAt.toLocaleDateString('pl-PL', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            })}
           </p>
-        )}
 
         <div class="prose-content">
           <Content />

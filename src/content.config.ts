@@ -17,7 +17,7 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
     title:     z.string(),
-    updatedAt: z.string().optional(),
+    updatedAt: z.coerce.date(),
   }),
 });
 
