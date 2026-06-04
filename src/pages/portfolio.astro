@@ -39,7 +39,7 @@ const projects = sorted.map(p => {
 ---
 
 <BaseLayout
-  title="Realizacje — Glass Project Warszawa"
+  title="Realizacje — MR Glass Project Warszawa"
   description="Galeria szklanych obiektów artystycznych i użytkowych. Realizacje dla firm, hoteli, architektów i klientów prywatnych."
 >
 
@@ -219,12 +219,18 @@ const projects = sorted.map(p => {
                   <p class="mt-1 text-sm text-glass-muted" x-text="project.description"></p>
                 </template>
                 <template x-if="project.year || project.dimensions">
-                  <div class="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-glass-smoke">
+                  <div class="mt-3 flex flex-col items-center gap-1 text-xs text-glass-smoke">
                     <template x-if="project.year">
-                      <span x-text="project.year"></span>
+                      <p>
+                        <span>Rok realizacji: </span>
+                        <span x-text="project.year"></span>
+                      </p>
                     </template>
                     <template x-if="project.dimensions">
-                      <span x-text="project.dimensions"></span>
+                      <p>
+                        <span>Wymiary: </span>
+                        <span x-text="project.dimensions"></span>
+                      </p>
                     </template>
                   </div>
                 </template>
