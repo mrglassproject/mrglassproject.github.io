@@ -72,7 +72,6 @@ collections:
       - { name: dimensions,  label: Wymiary,          widget: text,    required: false }
       - { name: order, label: Kolejność, widget: number, default: 0, required: false, value_type: int }
       - { name: published,   label: Opublikowana,     widget: boolean, default: true }
-      - { name: body,        label: Opis rozszerzony, widget: markdown, required: false }
 
   - name: workshops
     label: Warsztaty
