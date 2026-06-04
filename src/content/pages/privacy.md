@@ -1,6 +1,10 @@
 ---
 title: Polityka prywatności
+<<<<<<< HEAD
 updatedAt: 2026-06-29
+=======
+updatedAt: 2026-06-04
+>>>>>>> 8d6fe6f (Update Strony prawne “privacy”)
 ---
 
 ## 1. Informacje ogólne
