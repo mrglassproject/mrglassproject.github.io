@@ -113,7 +113,6 @@ collections:
       - { name: name,    label: Imię i nazwisko, widget: string }
       - { name: content, label: Treść opinii,    widget: text }
       - { name: rating,  label: Ocena (1-5),     widget: number, min: 1, max: 5, default: 5 }
-      - { name: date,    label: Data,            widget: string }
       - { name: source,  label: Źródło,          widget: string, default: Google, required: false }
 
   - name: faq
