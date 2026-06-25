@@ -6,5 +6,5 @@ answer: |
 
   Odbiór osobisty — z pracowni w Warszawie. To dobra okazja, żeby zobaczyć miejsce pracy i porozmawiać o projekcie. Chętnie zapraszamy.
 
-  Dostawa kurierska — pakujemy obiekty w specjalnie przygotowane opakowania, które zapewniają bezpieczeństwo szkła w transporcie. Koszt dostawy doliczamy do zamówienia. Wysyłamy na terenie całej Polski, a duże projekty konsultujemy indywidualnie.
+  Dostawa — mniejsze przedmioty mogą być wysłane kurierem, ale niestety te większe realizacje bardzo często wymagają już indywidualnego transportu ze względu na ryzyko uszkodzenia. Koszt dostawy jest wyceniany dodatkowo w zależności od rozmiarów oraz wagi.
 ---

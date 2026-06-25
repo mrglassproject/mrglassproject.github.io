@@ -2,10 +2,5 @@
 order: 3
 question: Jak długo trwa realizacja zamówienia?
 answer: |
-  Na czas realizacji składają się: czas formowania szkła, obowiązkowy proces chłodzenia (który nie może być skrócony — to wymóg materiałowy), ewentualne wykończenie i pakowanie. Jeśli masz konkretny termin — np. ślub, otwarcie lokalu, wydarzenie firmowe — powiedz nam o tym na początku. Staramy się dostosować harmonogram, o ile termin jest realny.
-
-  Orientacyjne terminy:
-  - proste formy użytkowe — 2–4 tygodnie
-  - obiekty artystyczne — 4–8 tygodni
-  - projekty złożone i serie — ustalamy indywidualnie
+   Realizacja jest uzależnoniona od kilku czynników, w głównej mierze od tego czy jest bardziej czy mniej skomplikowana, czy posiadamy odpowiednie materiały takie jak szkło, formy, barwniki lub od naszych zobowiązań terminowych związanych z innymi Klientami. Może to być tydzień roboczy ale może to być kilka tygodni. Zawsze jednak staramy się brać pod uwagę harmonogram Klientów po to aby wspólnie znaleźć najlepsze rozwiazanie dla obu stron.
 ---

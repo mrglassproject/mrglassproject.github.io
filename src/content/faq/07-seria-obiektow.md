@@ -6,5 +6,4 @@ answer: |
 
   Jeśli zależy Ci na serii, powiedz mi: ile sztuk, do kiedy i jakie są wymagania dotyczące wyglądu. Dobierzemy formę, którą można powtórzyć ze spójnym efektem przy ręcznej produkcji.
 
-  Minimalna sensowna seria to zwykle 5–10 sztuk, żeby opłacało się to ekonomicznie obu stronom.
 ---

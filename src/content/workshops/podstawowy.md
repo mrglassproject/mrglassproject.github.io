@@ -6,6 +6,7 @@ maxPersons: 6
 price: 450
 pricePair: 850
 pricePairLabel: "2 os. tylko 850 zł"
+voucherPair: true
 level: "podstawowy"
 setmoreUrl: "https://setmore.com/TWOJ_LINK_PODSTAWOWY"
 stripeUrl1: "https://buy.stripe.com/test_dRm8wQaGudJjc5F5AugUM02"

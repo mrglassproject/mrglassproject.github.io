@@ -1,4 +1,5 @@
 ---
+import { CONTACT } from '../config/site';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionCta from '../components/ui/SectionCta.astro';
@@ -26,7 +27,6 @@ const skills = [
   'Zdobienia szkła oraz techniki tworzenia pęcherzy powietrza.',
 ];
 
-// Serializacja opinii dla Alpine (load more)
 const testimonialsData = testimonials.map(t => ({
   name:    t.data.name,
   content: t.data.content,
@@ -70,36 +70,37 @@ const testimonialsData = testimonials.map(t => ({
           </div>
         </div>
 
-          <div class="w-full lg:w-1/2 px-4 lg:pr-16">
+        <div class="w-full lg:w-1/2 px-4 lg:pr-16">
           <h1 class="section-heading">Warsztaty. Dla kogo?</h1>
           <p class="prose-p">
             Zapraszam Cię na warsztaty, które nie są pokazem ani kursem „krok po kroku", lecz prawdziwym spotkaniem z żywym, wymagającym materiałem. Ze szkłem pracuje się tu i teraz - z pełnym skupieniem, uważnością i odwagą podejmowania decyzji w danej chwili. Jeśli masz ukończone 18 lat i chcesz doświadczyć, jak to jest tworzyć własny obiekt ze szkła, te zajęcia są dla Ciebie.
           </p>
-          </div>
-
         </div>
+
       </div>
+    </div>
   </section>
 
-<section class="section-py">
-  <div class="container px-4 mx-auto">
-    <h2 class="section-heading mb-16">Czego nauczysz się na warsztatach?</h2>
-    <div class="flex flex-wrap -mx-4">
-      {skills.map((skill, i) => (
-        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-10 flex items-start gap-4">
-          <span class="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 bg-glass-white text-glass-black rounded-full font-medium text-xl">
-            {i + 1}
-          </span>
-          <p class="prose-p mb-0">{skill}</p>
-        </div>
-      ))}
+  {/* ── Sekcja 2 — Czego się nauczysz ──────────────────────────── */}
+  <section class="section-py">
+    <div class="container px-4 mx-auto">
+      <h2 class="section-heading mb-16">Czego nauczysz się na warsztatach?</h2>
+      <div class="flex flex-wrap -mx-4">
+        {skills.map((skill, i) => (
+          <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-10 flex items-start gap-4">
+            <span class="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 bg-glass-white text-glass-black rounded-full font-medium text-xl">
+              {i + 1}
+            </span>
+            <p class="prose-p mb-0">{skill}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<SectionVideoWorkshops publicId="Warsztaty-Mr-Glass-Project-Compressed" />
+  <SectionVideoWorkshops publicId="Warsztaty-Mr-Glass-Project-Compressed" />
 
-  {/* ── Sekcja 2 — Opinie ───────────────────────────────────────── */}
+  {/* ── Sekcja 3 — Opinie ───────────────────────────────────────── */}
   <section class="section-py">
     <div class="container px-4 mx-auto">
       <div class="max-w-4xl mx-auto text-center mb-16">
@@ -130,8 +131,6 @@ const testimonialsData = testimonials.map(t => ({
             <div class="relative p-1 border border-white/20 hover:border-white/30 rounded-2xl transition-all duration-200 h-full">
               <div class="absolute inset-0 bg-glass-accent-fire opacity-10 rounded-2xl blur-3xl pointer-events-none" aria-hidden="true"></div>
               <div class="relative bg-gradient-to-t from-glass-anthracite to-glass-accent-fire/10 border border-white/10 p-6 rounded-xl h-full flex flex-col">
-
-                {/* Gwiazdki */}
                 <div class="flex gap-1 mb-4">
                   <template x-for="s in t.rating">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" class="text-glass-accent-amber">
@@ -139,9 +138,7 @@ const testimonialsData = testimonials.map(t => ({
                     </svg>
                   </template>
                 </div>
-
                 <p class="mb-8 text-base lg:text-lg leading-relaxed text-glass-muted flex-1" x-text="t.content"></p>
-
                 <div class="mt-auto flex items-center justify-between">
                   <p class="text-lg font-medium italic text-gradient px-1" x-text="t.name"></p>
                   <span class="text-xs text-glass-smoke" x-text="t.source"></span>
@@ -163,7 +160,7 @@ const testimonialsData = testimonials.map(t => ({
     </div>
   </section>
 
-  {/* ── Sekcja 3 — Oferta warsztatów ────────────────────────────── */}
+  {/* ── Sekcja 4 — Oferta warsztatów ────────────────────────────── */}
   <section class="section-py">
     <div class="container px-4 mx-auto">
       <h2 class="mb-16 text-center section-heading">Oferta warsztatów</h2>
@@ -171,98 +168,138 @@ const testimonialsData = testimonials.map(t => ({
       <div class="space-y-8">
         {workshops.map(w => {
           const featured = w.data.featured === true;
+          const hasPair  = !!w.data.pricePair;
           return (
-            <div class:list={[
-              'relative flex flex-wrap p-1 rounded-2xl border',
-              featured
-                ? 'border-glass-accent-amber/50'
-                : 'border-white/20'
-            ]}>
-
-              {/* Glow */}
+            <>
+              {/* ── Wariant 1 osoba ── */}
               <div class:list={[
-                'absolute inset-0 rounded-2xl blur-3xl opacity-20 pointer-events-none',
-                featured
-                  ? 'bg-glass-accent-amber'
-                  : 'bg-glass-accent-fire'
-              ]} aria-hidden="true"></div>
+                'relative flex flex-wrap p-1 rounded-2xl border',
+                featured ? 'border-glass-accent-amber/50' : 'border-white/20'
+              ]}>
+                <div class:list={[
+                  'absolute inset-0 rounded-2xl blur-3xl opacity-20 pointer-events-none',
+                  featured ? 'bg-glass-accent-amber' : 'bg-glass-accent-fire'
+                ]} aria-hidden="true"></div>
 
-              {/* Wyróżnienie badge */}
-              {featured && (
-                <div class="absolute -top-4 left-6 z-10 px-3 py-1 bg-glass-accent-amber text-glass-black text-xs font-semibold rounded-full">
-                  Polecany
+                {featured && (
+                  <div class="absolute -top-4 left-6 z-10 px-3 py-1 bg-glass-accent-amber text-glass-black text-xs font-semibold rounded-full">
+                    Polecany
+                  </div>
+                )}
+
+                <div class:list={[
+                  'relative w-full lg:w-2/3 p-8 lg:p-12 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl',
+                  featured
+                    ? 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-accent-amber/10'
+                    : 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-black'
+                ]}>
+                  <div class="max-w-md mb-8">
+                    <h3 class="mb-4 text-2xl md:text-3xl font-medium text-gradient font-heading">{w.data.title}</h3>
+                    <p class="prose-p">{w.data.description}</p>
+                  </div>
+                  <ul class="flex flex-wrap gap-x-8 gap-y-2">
+                    <li class="flex items-center gap-2">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span class="text-glass-muted">Czas trwania: {w.data.duration}</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span class="text-glass-muted">Maks. osób: {w.data.maxPersons}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class:list={[
+                  'relative w-full lg:w-1/3 p-8 text-center flex flex-col justify-center',
+                  'border-t lg:border-t-0 lg:border-l border-white/10',
+                  'rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl',
+                  featured
+                    ? 'bg-gradient-to-br from-glass-accent-amber/20 to-glass-accent-fire/10'
+                    : 'bg-gradient-to-br from-glass-anthracite to-glass-black'
+                ]}>
+                  <span class="block mb-6 text-4xl md:text-5xl font-medium text-gradient">
+                    {w.data.price} zł
+                  </span>
+                  <p class="mb-6 text-sm text-glass-muted">Cena za 1 osobę</p>
+                  <a
+                    href={w.data.setmoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class:list={[
+                      'inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group',
+                      featured
+                        ? 'text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg'
+                        : 'text-glass-white border border-glass-border hover:border-white/50'
+                    ]}
+                  >
+                    Zarezerwuj miejsce
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              {/* ── Wariant 2 osoby ── */}
+              {hasPair && (
+                <div class="relative flex flex-wrap p-1 rounded-2xl border border-glass-accent-amber/30">
+                  <div class="absolute inset-0 rounded-2xl blur-3xl opacity-20 pointer-events-none bg-glass-accent-amber" aria-hidden="true"></div>
+
+                  <div class="relative w-full lg:w-2/3 p-8 lg:p-12 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-accent-amber/10">
+                    <div class="max-w-md mb-8">
+                      <h3 class="mb-4 text-2xl md:text-3xl font-medium text-gradient font-heading">{w.data.title}</h3>
+                      <p class="prose-p">{w.data.description}</p>
+                    </div>
+                    <ul class="flex flex-wrap gap-x-8 gap-y-2">
+                      <li class="flex items-center gap-2">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-glass-muted">Czas trwania: {w.data.duration}</span>
+                      </li>
+                      <li class="flex items-center gap-2">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-glass-muted">Maks. osób: {w.data.maxPersons}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="relative w-full lg:w-1/3 p-8 text-center flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-white/10 rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl bg-gradient-to-br from-glass-accent-amber/20 to-glass-accent-fire/10">
+                    {w.data.pricePairLabel && (
+                      <p class="mb-2 text-sm font-medium text-glass-accent-amber">{w.data.pricePairLabel}</p>
+                    )}
+                    <span class="block mb-6 text-4xl md:text-5xl font-medium text-gradient-amber">
+                      {w.data.pricePair} zł
+                    </span>
+                    <p class="mb-6 text-sm text-glass-muted">Cena za 2 osoby</p>
+                    <a
+                      href={w.data.setmoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg"
+                    >
+                      Zarezerwuj miejsca
+                      <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               )}
-
-              {/* Lewa — info */}
-              <div class:list={[
-                'relative w-full lg:w-2/3 p-8 lg:p-12 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl',
-                featured
-                  ? 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-accent-amber/10'
-                  : 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-black'
-              ]}>
-                <div class="max-w-md mb-8">
-                  <h3 class="mb-4 text-2xl md:text-3xl font-medium text-gradient font-heading">{w.data.title}</h3>
-                  <p class="prose-p">{w.data.description}</p>
-                </div>
-                <ul class="flex flex-wrap gap-x-8 gap-y-2">
-                  <li class="flex items-center gap-2">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span class="text-glass-muted">Czas trwania: {w.data.duration}</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span class="text-glass-muted">Maks. osób: {w.data.maxPersons}</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Prawa — cena + rezerwacja */}
-              <div class:list={[
-                'relative w-full lg:w-1/3 p-8 text-center flex flex-col justify-center',
-                'border-t lg:border-t-0 lg:border-l border-white/10',
-                'rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl',
-                featured
-                  ? 'bg-gradient-to-br from-glass-accent-amber/20 to-glass-accent-fire/10'
-                  : 'bg-gradient-to-br from-glass-anthracite to-glass-black'
-              ]}>
-                {w.data.pricePair && w.data.pricePairLabel && (
-                  <p class="mb-2 text-sm font-medium text-glass-accent-amber">{w.data.pricePairLabel}</p>
-                )}
-                <span class="block mb-6 text-4xl md:text-5xl font-medium text-gradient">
-                  {w.data.price} zł
-                </span>
-                <p class="mb-6 text-sm text-glass-muted">Cena za 1 osobę</p>
-                <a
-                  href={w.data.setmoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class:list={[
-                    'inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group',
-                    featured
-                      ? 'text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg'
-                      : 'text-glass-white border border-glass-border hover:border-white/50'
-                  ]}
-                >
-                  Zarezerwuj miejsce
-                  <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </a>
-              </div>
-
-            </div>
+            </>
           );
         })}
       </div>
     </div>
   </section>
 
-  {/* ── Sekcja 4 — Voucher ──────────────────────────────────────── */}
+  {/* ── Sekcja 5 — Voucher ──────────────────────────────────────── */}
   <section class="section-py">
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap items-center -mx-4">
@@ -317,6 +354,8 @@ const testimonialsData = testimonials.map(t => ({
     description="Chętnie odpowiemy na wszystkie pytania dotyczące organizacji, grup zorganizowanych lub indywidualnych terminów. Napisz do nas."
     ctaLabel="Napisz do nas"
     ctaHref="/contact"
+    ctaPhone={CONTACT.phoneWork}
+    ctaPhoneHref={CONTACT.phoneWorkHref}
   />
 
 </BaseLayout>

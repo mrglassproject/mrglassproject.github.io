@@ -6,6 +6,7 @@ maxPersons: 8
 price: 390
 pricePair: 650
 pricePairLabel: "2 os. tylko 650 zł"
+voucherPair: true
 level: "fusing"
 setmoreUrl: "https://setmore.com/TWOJ_LINK_FUSING"
 stripeUrl1: "https://buy.stripe.com/test_aFa7sM8ymbBb5HhbYSgUM00"
