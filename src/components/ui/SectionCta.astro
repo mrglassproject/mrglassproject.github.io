@@ -6,6 +6,10 @@ interface Props {
   description?: string;
   ctaLabel?:   string;
   ctaHref?:    string;
+  ctaPhone?:   string;
+  ctaPhoneWork?: string;
+  ctaPhoneHref?: string;
+  ctaPhoneWorkHref?: string;
 }
 
 const {
@@ -13,6 +17,8 @@ const {
   description = 'Jeśli masz pomysł lub potrzebujesz konsultacji dotyczącej szkła, zapraszam do kontaktu. Wspólnie określimy możliwości i zakres realizacji, dopasowując projekt do Twoich potrzeb i przestrzeni. Odpowiadamy na zapytania w ciągu 24 godzin w dni robocze.',
   ctaLabel    = 'Opisz swój projekt',
   ctaHref     = '/contact',
+  ctaPhone     = CONTACT.phone,
+  ctaPhoneHref = CONTACT.phoneHref,
 } = Astro.props;
 ---
 
@@ -39,10 +45,10 @@ const {
           </svg>
         </a>
         <a
-          href={CONTACT.phoneHref}
+          href={ctaPhoneHref}
           class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-glass-white border border-glass-border hover:border-white/50 rounded-full transition-all duration-200"
         >
-          Zadzwoń {CONTACT.phone}
+          Zadzwoń {ctaPhone}
         </a>
       </div>
 

@@ -50,6 +50,7 @@ const workshops = defineCollection({
     price:          z.number(),
     pricePair:      z.number().optional(),
     pricePairLabel: z.string().optional(),
+    voucherPair:    z.boolean().default(true),
     level:          z.enum(['fusing', 'podstawowy', 'zaawansowany', 'indywidualny']),
     setmoreUrl:     z.string(),
     active:         z.boolean().default(true),

@@ -1,5 +1,6 @@
 {
-  "phone": "+48 500 603 151",
+  "phone": "+48 667 947 576",
+  "phone_workshops": "+48 500 603 151",
   "email": "mrglassproject@gmail.com",
   "address": "ul. Grójecka 79 lok. 7",
   "city": "02-094 Warszawa",
@@ -11,11 +12,26 @@
     "googlemaps": "https://maps.app.goo.gl/vXUA1MQB47HWjrjP9"
   },
   "clients": [
-    "OBI",
-    "Wasalaa",
-    "Le Collet",
-    "MedEstelle",
-    "LUX MED"
+  "Obi",
+  "Wasalaa",
+  "Le Collet",
+  "MedEstelle",
+  "LUX MED",
+  "Miasto Warszawa",
+  "MOSiR",
+  "Dior",
+  "Sephora",
+  "Krosno Glass",
+  "PISF",
+  "Castorama",
+  "TVN Style",
+  "La Marquese",
+  "Radio Kolor",
+  "Polsat",
+  "Desa Unicum",
+  "Dresscode",
+  "PGE Narodowy",
+  "Twój Styl"
   ],
   "ofertaFirmy": [
     "mr-glass-projekt-firmy-32",
