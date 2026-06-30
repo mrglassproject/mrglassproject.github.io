@@ -145,7 +145,7 @@
   font-size: clamp(1.25rem, 2vw, 1.875rem);
   font-weight: 500;
   font-family: var(--font-heading);
-  color: transparent;
+  color: var(--color-glass-muted);
   background: linear-gradient(to right, #f3f4f6, #e5e7eb, #d1d5db);
   -webkit-background-clip: text;
   background-clip: text;
