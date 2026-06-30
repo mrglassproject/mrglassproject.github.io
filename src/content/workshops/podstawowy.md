@@ -13,5 +13,5 @@ stripeUrl1: "https://buy.stripe.com/test_dRm8wQaGudJjc5F5AugUM02"
 stripeUrl2: "https://buy.stripe.com/test_bJe7sM6qe34F6LlbYSgUM03"
 active: true
 order: 2
-featured: true
+featured: false
 ---

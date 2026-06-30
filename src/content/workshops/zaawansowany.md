@@ -4,8 +4,8 @@ description: "Dzięki pracy na drumli stworzysz szklankę z uchem, kieliszek na 
 duration: "3 godziny"
 maxPersons: 5
 price: 600
-pricePair: 1000
-pricePairLabel: "2 os. tylko 1000 zł"
+pricePair: 0
+pricePairLabel: ""
 voucherPair: false
 level: "zaawansowany"
 setmoreUrl: "https://setmore.com/TWOJ_LINK_ZAAWANSOWANY"
