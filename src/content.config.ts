@@ -40,6 +40,14 @@ const projects = defineCollection({
   }),
 });
 
+const pricingTierSchema = z.object({
+  persons:    z.number(),
+  price:      z.number(),
+  label:      z.string().optional(),
+  setmoreUrl: z.string(),
+  stripeUrl:  z.string().optional(),
+});
+
 const workshops = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/workshops' }),
   schema: z.object({
@@ -56,8 +64,9 @@ const workshops = defineCollection({
     active:         z.boolean().default(true),
     order:          z.number().default(0),
     featured:       z.boolean().default(false),
-    stripeUrl1: z.string().optional(),
-    stripeUrl2: z.string().optional(),
+    stripeUrl1:     z.string().optional(),
+    stripeUrl2:     z.string().optional(),
+    pricingTiers:   z.array(pricingTierSchema).optional(),
   }),
 });
 

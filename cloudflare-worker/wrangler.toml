@@ -6,15 +6,15 @@ compatibility_flags = ["nodejs_compat"]
 [vars]
 SITE_URL = "https://mrglassproject.com"
 
-# Sekrety — dodaj przez CLI:
-# wrangler secret put STRIPE_WEBHOOK_SECRET
-# wrangler secret put RESEND_API_KEY
-# wrangler secret put STRIPE_SECRET_KEY
-
 [assets]
 directory = "./assets"
 
 [[rules]]
 type        = "CompiledWasm"
 globs       = ["**/*.wasm"]
+fallthrough = true
+
+[[rules]]
+type        = "Data"
+globs       = ["**/*.woff2"]
 fallthrough = true

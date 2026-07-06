@@ -168,131 +168,190 @@ const testimonialsData = testimonials.map(t => ({
       <div class="space-y-8">
         {workshops.map(w => {
           const featured = w.data.featured === true;
-          const hasPair  = !!w.data.pricePair;
+          const tiers = w.data.pricingTiers ?? [];
           return (
-            <>
-              {/* ── Wariant 1 osoba ── */}
+            <div class:list={[
+              'relative flex flex-wrap p-1 rounded-2xl border',
+              featured ? 'border-glass-accent-amber/50' : 'border-white/20'
+            ]}>
               <div class:list={[
-                'relative flex flex-wrap p-1 rounded-2xl border',
-                featured ? 'border-glass-accent-amber/50' : 'border-white/20'
+                'absolute inset-0 rounded-2xl blur-3xl opacity-20 pointer-events-none',
+                featured ? 'bg-glass-accent-amber' : 'bg-glass-accent-fire'
+              ]} aria-hidden="true"></div>
+
+              {featured && (
+                <div class="absolute -top-4 left-6 z-10 px-3 py-1 bg-glass-accent-amber text-glass-black text-xs font-semibold rounded-full">
+                  Polecany
+                </div>
+              )}
+
+              <div class:list={[
+                'relative w-full lg:w-2/3 p-8 lg:p-12 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl',
+                featured
+                  ? 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-accent-amber/10'
+                  : 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-black'
               ]}>
-                <div class:list={[
-                  'absolute inset-0 rounded-2xl blur-3xl opacity-20 pointer-events-none',
-                  featured ? 'bg-glass-accent-amber' : 'bg-glass-accent-fire'
-                ]} aria-hidden="true"></div>
-
-                {featured && (
-                  <div class="absolute -top-4 left-6 z-10 px-3 py-1 bg-glass-accent-amber text-glass-black text-xs font-semibold rounded-full">
-                    Polecany
-                  </div>
-                )}
-
-                <div class:list={[
-                  'relative w-full lg:w-2/3 p-8 lg:p-12 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl',
-                  featured
-                    ? 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-accent-amber/10'
-                    : 'bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-black'
-                ]}>
-                  <div class="max-w-md mb-8">
-                    <h3 class="mb-4 text-2xl md:text-3xl font-medium text-gradient font-heading">{w.data.title}</h3>
-                    <p class="prose-p">{w.data.description}</p>
-                  </div>
-                  <ul class="flex flex-wrap gap-x-8 gap-y-2">
-                    <li class="flex items-center gap-2">
-                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                      <span class="text-glass-muted">Czas trwania: {w.data.duration}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                      <span class="text-glass-muted">Maks. osób: {w.data.maxPersons}</span>
-                    </li>
-                  </ul>
+                <div class="max-w-md mb-8">
+                  <h3 class="mb-4 text-2xl md:text-3xl font-medium text-gradient font-heading">{w.data.title}</h3>
+                  <p class="prose-p">{w.data.description}</p>
                 </div>
-
-                <div class:list={[
-                  'relative w-full lg:w-1/3 p-8 text-center flex flex-col justify-center',
-                  'border-t lg:border-t-0 lg:border-l border-white/10',
-                  'rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl',
-                  featured
-                    ? 'bg-gradient-to-br from-glass-accent-amber/20 to-glass-accent-fire/10'
-                    : 'bg-gradient-to-br from-glass-anthracite to-glass-black'
-                ]}>
-                  <span class="block mb-6 text-4xl md:text-5xl font-medium text-gradient">
-                    {w.data.price} zł
-                  </span>
-                  <p class="mb-6 text-sm text-glass-muted">Cena za 1 osobę</p>
-                  <a
-                    href={w.data.setmoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class:list={[
-                      'inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group',
-                      featured
-                        ? 'text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg'
-                        : 'text-glass-white border border-glass-border hover:border-white/50'
-                    ]}
-                  >
-                    Zarezerwuj miejsce
-                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                <ul class="flex flex-wrap gap-x-8 gap-y-2">
+                  <li class="flex items-center gap-2">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                  </a>
-                </div>
+                    <span class="text-glass-muted">Czas trwania: {w.data.duration}</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-glass-muted">Maks. osób: {w.data.maxPersons}</span>
+                  </li>
+                </ul>
               </div>
 
-              {/* ── Wariant 2 osoby ── */}
-              {hasPair && (
-                <div class="relative flex flex-wrap p-1 rounded-2xl border border-glass-accent-amber/30">
-                  <div class="absolute inset-0 rounded-2xl blur-3xl opacity-20 pointer-events-none bg-glass-accent-amber" aria-hidden="true"></div>
+              <div class:list={[
+                'relative w-full lg:w-1/3 p-8 text-center flex flex-col justify-center',
+                'border-t lg:border-t-0 lg:border-l border-white/10',
+                'rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl',
+                featured
+                  ? 'bg-gradient-to-br from-glass-accent-amber/20 to-glass-accent-fire/10'
+                  : 'bg-gradient-to-br from-glass-anthracite to-glass-black'
+              ]}>
 
-                  <div class="relative w-full lg:w-2/3 p-8 lg:p-12 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl bg-gradient-to-br from-glass-black via-glass-anthracite to-glass-accent-amber/10">
-                    <div class="max-w-md mb-8">
-                      <h3 class="mb-4 text-2xl md:text-3xl font-medium text-gradient font-heading">{w.data.title}</h3>
-                      <p class="prose-p">{w.data.description}</p>
+                {tiers.length > 0 ? (
+                  <div
+                    class="relative w-full"
+                    x-data={`{
+                      open: false,
+                      tiers: ${JSON.stringify(tiers)},
+                      selected: null,
+                      select(tier) { this.selected = tier; this.open = false; }
+                    }`}
+                    x-on:click.outside="open = false"
+                  >
+                    {/* Cena */}
+                    <template x-if="selected">
+                      <div class="mb-4">
+                        <span class="block text-4xl md:text-5xl font-medium text-gradient" x-text="selected.price + ' zł'"></span>
+                        <p class="mt-1 text-sm text-glass-muted">
+                          <span x-text="'Cena za ' + selected.persons"></span>
+                          <span x-text="selected.persons === 1 ? ' osobę' : (selected.persons >= 2 && selected.persons <= 4 ? ' osoby' : ' osób')"></span>
+                        </p>
+                      </div>
+                    </template>
+                    <template x-if="!selected">
+                      <div class="mb-4">
+                        <span class="block text-4xl md:text-5xl font-medium text-gradient">
+                          {w.data.price} zł
+                        </span>
+                        <p class="mt-1 text-sm text-glass-muted">Cena za 1 osobę</p>
+                      </div>
+                    </template>
+
+                    {/* Selektor liczby osób */}
+                    <button
+                      type="button"
+                      x-on:click="open = !open"
+                      x-bind:aria-expanded="open.toString()"
+                      class="relative w-full inline-flex items-center justify-between gap-2 px-5 py-3 mb-3 text-sm font-medium rounded-full border border-white/50 hover:border-white text-glass-white transition-all duration-200"
+                    >
+                      <template x-if="!selected">
+                        <span class="text-glass-muted">Wybierz ilość osób</span>
+                      </template>
+                      <template x-if="selected">
+                        <span class="flex items-center gap-2">
+                          <span x-text="selected.persons"></span>
+                          <span x-text="selected.persons === 1 ? 'osoba' : (selected.persons >= 2 && selected.persons <= 4 ? 'osoby' : 'osób')"></span>
+                          <span class="text-glass-accent-amber font-semibold" x-text="'- ' + selected.price + ' zł'"></span>
+                        </span>
+                      </template>
+                      <svg
+                        class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                        x-bind:class="open ? 'rotate-180' : 'rotate-0'"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    </button>
+
+                    <div
+                      x-show="open"
+                      x-transition:enter="transition ease-out duration-150"
+                      x-transition:enter-start="opacity-0 -translate-y-2"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      x-transition:leave="transition ease-in duration-100"
+                      x-transition:leave-start="opacity-100 translate-y-0"
+                      x-transition:leave-end="opacity-0 -translate-y-2"
+                      class="absolute z-20 left-0 right-0 -mt-1 py-2 bg-glass-anthracite border border-glass-border rounded-xl shadow-xl text-left max-h-64 overflow-y-auto"
+                      style="display: none;"
+                    >
+                      <template x-for="tier in tiers" x-bind:key="tier.persons">
+                        <button
+                          type="button"
+                          x-on:click="select(tier)"
+                          class="flex items-center justify-between gap-3 w-full px-4 py-2.5 text-sm hover:bg-glass-black transition-colors duration-150"
+                        >
+                          <span class="text-glass-white">
+                            <span x-text="tier.persons"></span>
+                            <span x-text="tier.persons === 1 ? ' osoba' : (tier.persons >= 2 && tier.persons <= 4 ? ' osoby' : ' osób')"></span>
+                          </span>
+                          <span class="flex flex-col items-end">
+                            <span class="text-glass-accent-amber font-semibold" x-text="tier.price + ' zł'"></span>
+                            <span x-show="tier.label" class="text-xs text-cool" x-text="tier.label"></span>
+                          </span>
+                        </button>
+                      </template>
                     </div>
-                    <ul class="flex flex-wrap gap-x-8 gap-y-2">
-                      <li class="flex items-center gap-2">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span class="text-glass-muted">Czas trwania: {w.data.duration}</span>
-                      </li>
-                      <li class="flex items-center gap-2">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-glass-white flex-shrink-0" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span class="text-glass-muted">Maks. osób: {w.data.maxPersons}</span>
-                      </li>
-                    </ul>
-                  </div>
 
-                  <div class="relative w-full lg:w-1/3 p-8 text-center flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-white/10 rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl bg-gradient-to-br from-glass-accent-amber/20 to-glass-accent-fire/10">
-                    {w.data.pricePairLabel && (
-                      <p class="mb-2 text-sm font-medium text-glass-accent-amber">{w.data.pricePairLabel}</p>
-                    )}
-                    <span class="block mb-6 text-4xl md:text-5xl font-medium text-gradient-amber">
-                      {w.data.pricePair} zł
-                    </span>
-                    <p class="mb-6 text-sm text-glass-muted">Cena za 2 osoby</p>
+                    {/* Przycisk Zarezerwuj miejsce */}
                     <a
-                      href={w.data.setmoreUrl}
+                      x-bind:href="selected ? selected.setmoreUrl : '#'"
+                      x-bind:class="!selected && 'opacity-40 pointer-events-none cursor-not-allowed'"
+                      x-bind:aria-disabled="(!selected).toString()"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg"
+                      class:list={[
+                        'inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group',
+                        featured
+                          ? 'text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg'
+                          : 'text-glass-white border border-glass-border hover:border-white/50'
+                      ]}
                     >
-                      Zarezerwuj miejsca
+                      Zarezerwuj miejsce
                       <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </a>
                   </div>
-                </div>
-              )}
-            </>
+                ) : (
+                  <>
+                    <span class="block mb-6 text-4xl md:text-5xl font-medium text-gradient">
+                      {w.data.price} zł
+                    </span>
+                    <p class="mb-6 text-sm text-glass-muted">Cena za 1 osobę</p>
+                    <a
+                      href={w.data.setmoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class:list={[
+                        'inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 group',
+                        featured
+                          ? 'text-glass-black bg-glass-accent-amber hover:bg-glass-accent-glow hover:shadow-lg'
+                          : 'text-glass-white border border-glass-border hover:border-white/50'
+                      ]}
+                    >
+                      Zarezerwuj miejsce
+                      <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </>
+                )}
+
+              </div>
+            </div>
           );
         })}
       </div>

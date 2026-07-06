@@ -27,7 +27,7 @@ Na potrzeby Regulaminu użyte pojęcia oznaczają:
 3. **Konsument** — osoba fizyczna dokonująca czynności prawnej niezwiązanej bezpośrednio z jej działalnością gospodarczą lub zawodową.
 4. **Warsztaty** — odpłatne zajęcia artystyczne organizowane przez Sprzedawcę, w szczególności warsztaty z fusingu oraz warsztaty ze szkła dmuchanego.
 5. **Voucher** — dokument, kod lub potwierdzenie elektroniczne uprawniające do udziału w określonym rodzaju warsztatów, zgodnie z jego wartością, zakresem i terminem ważności.
-6. **Strona internetowa** — serwis prowadzony przez Sprzedawcę pod adresem wskazanym na stronie Glass Project.
+6. **Strona internetowa** — serwis prowadzony przez Sprzedawcę pod adresem wskazanym na stronie Maciej Rafalski Glass Project.
 7. **Operator płatności** — zewnętrzny podmiot obsługujący płatności elektroniczne, w szczególności Stripe. W zależności od wybranej metody płatności transakcja może być realizowana także z wykorzystaniem Przelewy24.
 
 ## 3. Oferta warsztatów i voucherów
@@ -72,7 +72,7 @@ Na potrzeby Regulaminu użyte pojęcia oznaczają:
 ## 7. Zakup i realizacja voucherów
 
 1. Voucher można zakupić za pośrednictwem strony internetowej albo w inny sposób uzgodniony ze Sprzedawcą.
-2. Po zakupie vouchera Klient otrzymuje drogą elektroniczną potwierdzenie zakupu oraz informacje dotyczące realizacji vouchera.
+2. Po zakupie vouchera online przez formularz na naszej stronie internetowej, Klient otrzymuje drogą elektroniczną potwierdzenie zakupu oraz informacje dotyczące realizacji vouchera.
 3. Voucher jest ważny przez **12 miesięcy od dnia zakupu**, chyba że w opisie vouchera wskazano inny termin ważności.
 4. Voucher można wykorzystać wyłącznie w okresie jego ważności.
 5. Voucher nie podlega wymianie na gotówkę.

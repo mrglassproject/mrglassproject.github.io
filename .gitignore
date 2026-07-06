@@ -14,10 +14,11 @@ cloudflare-worker/node_modules/
 # Logi setupu
 setup.log
 
-# Cloudflare Worker — pliki tymczasowe
+# Cloudflare Worker
 cloudflare-worker/.wrangler/
+cloudflare-worker/.env
 
-# Fonty Worker — duże pliki binarne, wgraj ręcznie
+# Fonty Worker
 cloudflare-worker/assets/*.woff2
 cloudflare-worker/assets/*.ttf
 !cloudflare-worker/assets/.gitkeep

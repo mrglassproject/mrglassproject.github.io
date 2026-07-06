@@ -166,7 +166,9 @@
   margin-bottom: 1.5rem;
 }
 
-.prose-content ul li {
+.prose-content ul li, 
+.prose-content ol li
+{
   display: flex;
   gap: 0.75rem;
   color: var(--color-glass-muted);
