@@ -17,6 +17,7 @@ setup.log
 # Cloudflare Worker
 cloudflare-worker/.wrangler/
 cloudflare-worker/.env
+cloudflare-worker/.dev.vars
 
 # Fonty Worker
 cloudflare-worker/assets/*.woff2
