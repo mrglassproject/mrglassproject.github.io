@@ -16,5 +16,5 @@ fallthrough = true
 
 [[rules]]
 type        = "Data"
-globs       = ["**/*.woff2"]
+globs       = ["**/*.ttf"]
 fallthrough = true

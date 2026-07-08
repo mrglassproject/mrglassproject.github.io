@@ -165,6 +165,7 @@ async function generateVoucherSvg(data: {
                 {
                   type: 'div',
                   props: {
+                    style: { display: 'flex', flexDirection: 'column' },
                     children: [
                       {
                         type: 'div',
@@ -189,7 +190,7 @@ async function generateVoucherSvg(data: {
                 {
                   type: 'div',
                   props: {
-                    style: { textAlign: 'right' },
+                    style: { textAlign: 'right', display: 'flex', flexDirection: 'column' },
                     children: [
                       {
                         type: 'div',
@@ -316,7 +317,7 @@ async function sendVoucherEmail(params: {
       'Content-Type':  'application/json',
     },
     body: JSON.stringify({
-      from:    'Glass Project <noreply@mrglassproject.com>',
+      from:    'MR Glass Project <noreply@pinbot.pl>',
       to:      [params.to],
       subject: `🎁 Twój voucher na warsztaty — ${params.workshopTitle}`,
       html,

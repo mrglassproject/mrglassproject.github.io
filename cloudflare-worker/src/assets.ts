@@ -1,8 +1,8 @@
 // Zasoby statyczne — uzupełnij przed deployem
 // Patrz: VOUCHERS.md sekcja 1.1 i 1.2
 
-import inter400 from '../assets/Inter-Regular.woff2';
-import inter700 from '../assets/Inter-Bold.woff2';
+import inter400 from '../assets/Inter_24pt-Regular.ttf';
+import inter700 from '../assets/Inter_24pt-Bold.ttf';
 
 export const FONTS: import('satori').SatoriOptions['fonts'] = [
   { name: 'Inter', data: inter400, weight: 400, style: 'normal' },
