@@ -6,7 +6,7 @@ dist/
 node_modules/
 cloudflare-worker/node_modules/
 
-# Env — NIE wgrywaj do repo
+# Env
 .env
 .env.*
 !.env.example
@@ -20,10 +20,7 @@ cloudflare-worker/.env
 cloudflare-worker/.dev.vars
 
 # Fonty Worker
-cloudflare-worker/assets/*.woff2
-cloudflare-worker/assets/*.ttf
 !cloudflare-worker/assets/.gitkeep
-!cloudflare-worker/assets/README.md
 
 # OS
 .DS_Store
