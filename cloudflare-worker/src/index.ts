@@ -114,7 +114,7 @@ async function generateVoucherSvg(data: {
                   type: 'div',
                   props: {
                     style: { color: '#FF8C00', fontSize: '13px', letterSpacing: '3px', textTransform: 'uppercase' },
-                    children: 'Voucher Prezentowy',
+                    children: 'Voucher Prezentowy na Warsztaty',
                   },
                 },
               ],
@@ -253,60 +253,101 @@ async function sendVoucherEmail(params: {
   const html = `
 <!DOCTYPE html>
 <html lang="pl">
-<head><meta charset="UTF-8"><title>Voucher Glass Project</title></head>
-<body style="margin:0;padding:0;background:#0A0A0B;font-family:Arial,sans-serif;color:#ffffff;">
-  <table width="100%" cellpadding="0" cellspacing="0">
-    <tr><td align="center" style="padding:40px 16px;">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#1a1a1f;border-radius:12px;overflow:hidden;">
-        <tr><td style="padding:40px;">
-          <h1 style="color:#FF8C00;margin:0 0 8px;font-size:24px;">Voucher Prezentowy</h1>
-          <h2 style="margin:0 0 24px;font-size:18px;font-weight:normal;color:#ccc;">Glass Project — Pracownia Szkła Artystycznego</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voucher z MR Glass Project</title>
+</head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:Arial,sans-serif;color:#18181b;">
 
-          <p style="color:#aaa;margin:0 0 24px;">
-            Cześć ${params.recipientName},<br><br>
-            Gratulacje! Otrzymujesz voucher uprawniający do udziału w:<br>
-            <strong style="color:#fff;font-size:18px;">${params.workshopTitle}</strong>
-          </p>
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;">
+    <tr><td align="center" style="padding:32px 16px;">
 
-          <img src="cid:voucher-image"
-               alt="Voucher ${params.code}"
-               width="560"
-               style="border-radius:8px;display:block;margin:0 auto 24px;">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
 
-          <table width="100%" cellpadding="16" style="background:#0A0A0B;border-radius:8px;margin-bottom:24px;">
-            <tr>
-              <td style="color:#666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Kod vouchera</td>
-              <td align="right" style="color:#FF8C00;font-size:20px;font-weight:bold;letter-spacing:3px;">${params.code}</td>
-            </tr>
-            <tr>
-              <td style="color:#666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Ważny do</td>
-              <td align="right" style="color:#fff;">${params.validUntil}</td>
-            </tr>
-          </table>
-
-          <p style="color:#aaa;font-size:14px;margin:0 0 24px;">
-            Aby wykorzystać voucher, skontaktuj się z nami podając kod lub zapisz się na warsztaty przez stronę.
-          </p>
-
+        <!-- Nagłówek ciemny -->
+        <tr><td style="background:#0A0A0B;padding:28px 40px;">
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td>
-                <a href="${params.siteUrl}/workshop"
-                   style="display:inline-block;background:#FF8C00;color:#000;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:15px;">
-                  Zapisz się na warsztaty →
-                </a>
+                <p style="margin:0;color:#FF8C00;font-size:11px;letter-spacing:3px;text-transform:uppercase;">MR Glass Project Maciej Rafalski</p>
+                <p style="margin:4px 0 0;color:#ffffff;font-size:22px;font-weight:bold;">Voucher Prezentowy</p>
               </td>
             </tr>
           </table>
         </td></tr>
 
-        <tr><td style="padding:24px 40px;border-top:1px solid #333;color:#555;font-size:12px;">
-          Glass Project · Pracownia Szkła Artystycznego Maciej Rafalski<br>
-          ul. Grójecka 79 lok. 7, 02-094 Warszawa · mrglassproject@gmail.com
+        <!-- Treść główna -->
+        <tr><td style="padding:40px;">
+
+          <p style="color:#3f3f46;margin:0 0 8px;font-size:14px;">Dzień dobry <strong style="color:#18181b;">${params.recipientName}</strong>,</p>
+          <p style="color:#3f3f46;margin:0 0 28px;font-size:14px;line-height:1.6;">
+            Gratulacje! Otrzymujesz voucher na warsztaty ze szkła artystycznego:
+          </p>
+
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;margin-bottom:28px;">
+            <tr><td style="padding:20px 24px;">
+              <p style="margin:0 0 4px;color:#9a3412;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Warsztaty</p>
+              <p style="margin:0;color:#18181b;font-size:18px;font-weight:bold;">${params.workshopTitle}</p>
+            </td></tr>
+          </table>
+
+          <!-- Zdjęcie vouchera -->
+          <img src="cid:voucher-image"
+               alt="Voucher ${params.code}"
+               width="520"
+               style="border-radius:8px;display:block;margin:0 auto 28px;border:1px solid #e4e4e7;">
+
+          <!-- Kod i data ważności -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+            <tr>
+              <td width="50%" style="padding:16px;background:#f9f9f9;border-radius:8px 0 0 8px;border:1px solid #e4e4e7;border-right:none;">
+                <p style="margin:0 0 4px;color:#71717a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Kod vouchera</p>
+                <p style="margin:0;color:#FF8C00;font-size:22px;font-weight:bold;letter-spacing:3px;">${params.code}</p>
+              </td>
+              <td width="50%" style="padding:16px;background:#f9f9f9;border-radius:0 8px 8px 0;border:1px solid #e4e4e7;text-align:right;">
+                <p style="margin:0 0 4px;color:#71717a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Ważny do</p>
+                <p style="margin:0;color:#18181b;font-size:16px;font-weight:bold;">${params.validUntil}</p>
+              </td>
+            </tr>
+          </table>
+
+          <p style="color:#52525b;font-size:14px;line-height:1.6;margin:0 0 28px;">
+            Aby zarezerwować termin warsztatów, skontaktuj się z nami podając kod vouchera.
+          </p>
+
+          <!-- CTA -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
+            <tr>
+              <td>
+                <a href="${params.siteUrl}/contact"
+                   style="display:inline-block;background:#FF8C00;color:#000000;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:15px;">
+                  Skontaktuj się aby zarezerwować termin warsztatów →
+                </a>
+              </td>
+            </tr>
+          </table>
+
         </td></tr>
+
+        <!-- Stopka -->
+        <tr><td style="padding:20px 40px;background:#f9fafb;border-top:1px solid #e4e4e7;">
+          <p style="margin:0;color:#71717a;font-size:12px;line-height:1.6;">
+            <strong style="color:#3f3f46;">MR Glass Project Maciej Rafalski</strong> · Pracownia Szkła Artystycznego <br>
+            ul. Grójecka 79 lok. 7, 02-094 Warszawa<br>
+            <a href="mailto:mrglassproject@gmail.com" style="color:#FF8C00;text-decoration:none;">mrglassproject@gmail.com</a>
+          </p>
+        </td></tr>
+
       </table>
+
+      <p style="color:#a1a1aa;font-size:11px;text-align:center;margin:16px 0 0;">
+        Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać.
+      </p>
+
     </td></tr>
   </table>
+
 </body>
 </html>`;
 
@@ -319,7 +360,7 @@ async function sendVoucherEmail(params: {
     body: JSON.stringify({
       from:    'MR Glass Project <noreply@pinbot.pl>',
       to:      [params.to],
-      subject: `🎁 Twój voucher na warsztaty — ${params.workshopTitle}`,
+      subject: `🎁 Twój voucher na warsztaty - ${params.workshopTitle}`,
       html,
       attachments: [
         {
