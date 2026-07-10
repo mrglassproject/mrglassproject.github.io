@@ -113,8 +113,8 @@ async function generateVoucherSvg(data: {
                 {
                   type: 'div',
                   props: {
-                    style: { color: '#FF8C00', fontSize: '13px', letterSpacing: '3px', textTransform: 'uppercase' },
-                    children: 'Voucher Prezentowy na Warsztaty',
+                    style: { color: '#FF8C00', fontSize: '16px', letterSpacing: '3px', textTransform: 'uppercase' },
+                    children: 'Voucher Prezentowy',
                   },
                 },
               ],
@@ -129,7 +129,7 @@ async function generateVoucherSvg(data: {
                 {
                   type: 'div',
                   props: {
-                    style: { fontSize: '13px', color: '#888', letterSpacing: '1px', textTransform: 'uppercase' },
+                    style: { fontSize: '16px', color: '#A1A1AA', letterSpacing: '1px', textTransform: 'uppercase' },
                     children: 'Uprawnia do uczestnictwa w:',
                   },
                 },
@@ -143,7 +143,7 @@ async function generateVoucherSvg(data: {
                 {
                   type: 'div',
                   props: {
-                    style: { fontSize: '13px', color: '#888', marginTop: '8px' },
+                    style: { fontSize: '16px', color: '#A1A1AA', marginTop: '8px' },
                     children: `Dla: ${data.recipientName}`,
                   },
                 },
@@ -158,7 +158,7 @@ async function generateVoucherSvg(data: {
                 display:        'flex',
                 justifyContent: 'space-between',
                 alignItems:     'flex-end',
-                borderTop:      '1px solid #333',
+                borderTop:      '1px solid #A1A1AA',
                 paddingTop:     '24px',
               },
               children: [
@@ -169,7 +169,7 @@ async function generateVoucherSvg(data: {
                     children: [
                       {
                         type: 'div',
-                        props: { style: { fontSize: '11px', color: '#666', marginBottom: '4px' }, children: 'KOD VOUCHERA' },
+                        props: { style: { fontSize: '14px', color: '#A1A1AA', marginBottom: '4px' }, children: 'KOD VOUCHERA' },
                       },
                       {
                         type: 'div',
@@ -194,7 +194,7 @@ async function generateVoucherSvg(data: {
                     children: [
                       {
                         type: 'div',
-                        props: { style: { fontSize: '11px', color: '#666', marginBottom: '4px' }, children: 'WARTOŚĆ' },
+                        props: { style: { fontSize: '14px', color: '#A1A1AA', marginBottom: '4px' }, children: 'WARTOŚĆ' },
                       },
                       {
                         type: 'div',
@@ -203,7 +203,7 @@ async function generateVoucherSvg(data: {
                       {
                         type: 'div',
                         props: {
-                          style: { fontSize: '11px', color: '#666', marginTop: '8px' },
+                          style: { fontSize: '14px', color: '#A1A1AA', marginTop: '8px' },
                           children: `Ważny do: ${data.validUntil}`,
                         },
                       },
