@@ -382,10 +382,9 @@ export default {
       const metadata = session.metadata ?? {};
 
       // Wymagane metadane z Stripe Checkout
-      const recipientName  = metadata.recipient_name  ?? 'Drogi Uczestnik';
       const recipientName = metadata.recipient_name ?? session.customer_details?.name ?? 'drogi kliencie';
       const recipientEmail = metadata.recipient_email ?? session.customer_details?.email;
-      const workshopTitle  = metadata.workshop_title  ?? 'Warsztaty ze Szkła';
+      const workshopTitle  = metadata.workshop_title  ?? 'Warsztaty ze Szkła Artystycznego';
       const price          = Math.round((session.amount_total ?? 0) / 100); // grosze → zł
 
       if (!recipientEmail) {
