@@ -360,6 +360,7 @@ async function sendVoucherEmail(params: {
     body: JSON.stringify({
       from:    'MR Glass Project <noreply@pinbot.pl>',
       to:      [params.to],
+      reply_to: 'mrglassproject@gmail.com',
       cc:      ['mrglassproject@gmail.com'],   
       subject: `🎁 Twój voucher na warsztaty - ${params.workshopTitle}`,
       html,
