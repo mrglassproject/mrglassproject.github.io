@@ -282,12 +282,12 @@ async function sendVoucherEmail(params: {
 
           <p style="color:#3f3f46;margin:0 0 8px;font-size:14px;">Dzień dobry <strong style="color:#18181b;">${params.recipientName}</strong>,</p>
           <p style="color:#3f3f46;margin:0 0 28px;font-size:14px;line-height:1.6;">
-            Gratulacje! Otrzymujesz voucher na warsztaty ze szkła artystycznego:
+            Gratulacje! Kupiłaś/eś voucher na warsztaty ze szkła artystycznego.
           </p>
 
           <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;margin-bottom:28px;">
             <tr><td style="padding:20px 24px;">
-              <p style="margin:0 0 4px;color:#9a3412;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Warsztaty</p>
+              <p style="margin:0 0 4px;color:#9a3412;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Rodzaj Warsztatu</p>
               <p style="margin:0;color:#18181b;font-size:18px;font-weight:bold;">${params.workshopTitle}</p>
             </td></tr>
           </table>
@@ -360,6 +360,7 @@ async function sendVoucherEmail(params: {
     body: JSON.stringify({
       from:    'MR Glass Project <noreply@pinbot.pl>',
       to:      [params.to],
+      cc:      ['mrglassproject@gmail.com'],   
       subject: `🎁 Twój voucher na warsztaty - ${params.workshopTitle}`,
       html,
       attachments: [
