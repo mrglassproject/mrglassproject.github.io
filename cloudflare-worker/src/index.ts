@@ -360,7 +360,7 @@ async function sendVoucherEmail(params: {
       'Content-Type':  'application/json',
     },
     body: JSON.stringify({
-      from:    'MR Glass Project <noreply@pinbot.pl>',
+      from:    'MR Glass Project <noreply@send.mrglassproject.com>',
       to:      [params.to],
       reply_to: 'mrglassproject@gmail.com',
       cc:      ['mrglassproject@gmail.com'],   
