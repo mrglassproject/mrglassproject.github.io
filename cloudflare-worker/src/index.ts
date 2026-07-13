@@ -228,11 +228,16 @@ async function generateVoucherSvg(data: {
 
 // ─── Konwersja SVG → PNG przez @resvg/resvg-wasm ─────────────────────────────
 
+let wasmInitialized = false;
+
 async function svgToPng(svg: string): Promise<Uint8Array> {
   const { Resvg, initWasm } = await import('@resvg/resvg-wasm');
-  // @ts-ignore — plik WASM
   const wasmModule = await import('@resvg/resvg-wasm/index_bg.wasm');
-  await initWasm(wasmModule.default);
+  
+  if (!wasmInitialized) {
+    await initWasm(wasmModule.default);
+    wasmInitialized = true;
+  }
 
   const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 800 } });
   return resvg.render().asPng();
