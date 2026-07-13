@@ -266,7 +266,7 @@ async function sendVoucherEmail(params: {
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
 
         <!-- Nagłówek ciemny -->
-        <tr><td style="background:#0A0A0B;padding:28px 40px;">
+        <tr><td style="background:#0A0A0B;padding:28px 40px;text-align:center">
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td>
@@ -282,7 +282,8 @@ async function sendVoucherEmail(params: {
 
           <p style="color:#3f3f46;margin:0 0 8px;font-size:14px;">Dzień dobry <strong style="color:#18181b;">${params.recipientName}</strong>,</p>
           <p style="color:#3f3f46;margin:0 0 28px;font-size:14px;line-height:1.6;">
-            Gratulacje! Kupiłaś/eś voucher na warsztaty ze szkła artystycznego.
+            Gratulacje! Kupiłaś/eś voucher na warsztaty w MR Glass Project Maciej Rafalski. <br /><br />
+            Voucher możesz zachować jako plik lub wydrukować. Wystarczy, że niżej najedziesz i klikniesz (dotkniesz) grafikę z logo i napisem VOUCHER PREZENTOWY.  
           </p>
 
           <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;margin-bottom:28px;">
@@ -331,11 +332,12 @@ async function sendVoucherEmail(params: {
         </td></tr>
 
         <!-- Stopka -->
-        <tr><td style="padding:20px 40px;background:#f9fafb;border-top:1px solid #e4e4e7;">
+        <tr><td style="text-align: center;padding:20px 40px;background:#f9fafb;border-top:1px solid #e4e4e7;">
           <p style="margin:0;color:#71717a;font-size:12px;line-height:1.6;">
             <strong style="color:#3f3f46;">MR Glass Project Maciej Rafalski</strong> · Pracownia Szkła Artystycznego <br>
             ul. Grójecka 79 lok. 7, 02-094 Warszawa<br>
-            <a href="mailto:mrglassproject@gmail.com" style="color:#FF8C00;text-decoration:none;">mrglassproject@gmail.com</a>
+            e-mail: <a href="mailto:mrglassproject@gmail.com" style="color:#FF8C00;text-decoration:none;">mrglassproject@gmail.com</a><br>
+            www: <a href="https://mrglassproject.com/" style="color:#FF8C00;text-decoration:none;">mrglassproject.com</a>
           </p>
         </td></tr>
 
