@@ -265,7 +265,7 @@ async function sendVoucherEmail(params: {
 </head>
 <body style="margin:0;padding:0;background:#f4f4f5;font-family:Arial,sans-serif;color:#18181b;">
 
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="display:block;width:100%;max-width:520px;height:auto;background:#f4f4f5;">
     <tr><td align="center" style="padding:32px 16px;">
 
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
@@ -275,7 +275,7 @@ async function sendVoucherEmail(params: {
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td>
-                <p style="margin:0;color:#FF8C00;font-size:11px;letter-spacing:3px;text-transform:uppercase;">MR Glass Project Maciej Rafalski</p>
+                <p style="margin:0;color:#FF8C00;font-size:16px;letter-spacing:3px;text-transform:uppercase;">MR Glass Project </p>
                 <p style="margin:4px 0 0;color:#ffffff;font-size:22px;font-weight:bold;">Voucher Prezentowy</p>
               </td>
             </tr>
@@ -285,22 +285,22 @@ async function sendVoucherEmail(params: {
         <!-- Treść główna -->
         <tr><td style="padding:40px;">
 
-          <p style="color:#3f3f46;margin:0 0 8px;font-size:14px;">Dzień dobry <strong style="color:#18181b;">${params.recipientName}</strong>,</p>
-          <p style="color:#3f3f46;margin:0 0 28px;font-size:14px;line-height:1.6;">
-            Gratulacje! Kupiłaś/eś voucher na warsztaty w MR Glass Project Maciej Rafalski. <br /><br />
-            Voucher możesz zachować jako plik lub wydrukować. Wystarczy, że niżej najedziesz i klikniesz (dotkniesz) grafikę z logo i napisem VOUCHER PREZENTOWY.  
+          <p style="color:#18181b;margin:0 0 8px;font-size:16px;">Dzień dobry <strong style="color:#18181b;">${params.recipientName}</strong>,</p>
+          <p style="color:#18181b;margin:0 0 8px;font-size:16px;">Zakup vouchera zakończył się pomyślnie. Twoja płatność została przyjęta.</p>
+          <p style="color:#18181b;margin:0 0 28px;font-size:16px;line-height:1.6;">
+            Poniżej znajdziesz voucher na warsztaty oraz informacje potrzebne do rezerwacji terminu.  
           </p>
 
           <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;margin-bottom:28px;">
             <tr><td style="padding:20px 24px;">
-              <p style="margin:0 0 4px;color:#9a3412;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Rodzaj Warsztatu</p>
-              <p style="margin:0;color:#18181b;font-size:18px;font-weight:bold;">${params.workshopTitle}</p>
+              <p style="margin:0 0 4px;color:#9a3412;font-size:16px;text-transform:uppercase;letter-spacing:1px;">Rodzaj Warsztatu</p>
+              <p style="margin:0;color:#18181b;font-size:22px;font-weight:bold;">${params.workshopTitle}</p>
             </td></tr>
           </table>
 
           <!-- Zdjęcie vouchera -->
           <img src="cid:voucher-image"
-               alt="Voucher ${params.code}"
+               alt="Voucher prezentowy MR Glass Project, kod ${params.code}, ważny do ${params.validUntil}"
                width="520"
                style="border-radius:8px;display:block;margin:0 auto 28px;border:1px solid #e4e4e7;">
 
@@ -308,27 +308,28 @@ async function sendVoucherEmail(params: {
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
             <tr>
               <td width="50%" style="padding:16px;background:#f9f9f9;border-radius:8px 0 0 8px;border:1px solid #e4e4e7;border-right:none;">
-                <p style="margin:0 0 4px;color:#71717a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Kod vouchera</p>
+                <p style="margin:0 0 4px;color:#71717a;font-size:16px;text-transform:uppercase;letter-spacing:1px;">Kod vouchera</p>
                 <p style="margin:0;color:#FF8C00;font-size:22px;font-weight:bold;letter-spacing:3px;">${params.code}</p>
               </td>
               <td width="50%" style="padding:16px;background:#f9f9f9;border-radius:0 8px 8px 0;border:1px solid #e4e4e7;text-align:right;">
-                <p style="margin:0 0 4px;color:#71717a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Ważny do</p>
+                <p style="margin:0 0 4px;color:#71717a;font-size:16px;text-transform:uppercase;letter-spacing:1px;">Ważny do</p>
                 <p style="margin:0;color:#18181b;font-size:16px;font-weight:bold;">${params.validUntil}</p>
               </td>
             </tr>
           </table>
 
-          <p style="color:#52525b;font-size:14px;line-height:1.6;margin:0 0 28px;">
-            Aby zarezerwować termin warsztatów, skontaktuj się z nami podając kod vouchera.
+          <p style="color:#18181b;margin:0 0 8px;font-size:16px;">Jak zarezerwować termin? </p>
+          <p style="color:#18181b;font-size:16px;line-height:1.6;margin:0 0 28px;">
+            Przejdź do formularza kontaktowego, napisz wiadomość i podaj kod vouchera w treści wiadomości. Termin zostanie potwierdzony przez pracownię.
           </p>
 
           <!-- CTA -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
-            <tr>
+            <tr style="text-align:center">
               <td>
                 <a href="${params.siteUrl}/contact"
-                   style="display:inline-block;background:#FF8C00;color:#000000;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:15px;">
-                  Skontaktuj się aby zarezerwować termin warsztatów →
+                   style="display:inline-block;background:#FF8C00;color:#000000;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:16px;">
+                  Umów termin warsztatów →
                 </a>
               </td>
             </tr>
@@ -341,15 +342,15 @@ async function sendVoucherEmail(params: {
           <p style="margin:0;color:#71717a;font-size:12px;line-height:1.6;">
             <strong style="color:#3f3f46;">MR Glass Project Maciej Rafalski</strong> · Pracownia Szkła Artystycznego <br>
             ul. Grójecka 79 lok. 7, 02-094 Warszawa<br>
-            e-mail: <a href="mailto:mrglassproject@gmail.com" style="color:#FF8C00;text-decoration:none;">mrglassproject@gmail.com</a><br>
+            e-mail: <a href="mailto:rezerwacje@mrglassproject.com" style="color:#FF8C00;text-decoration:none;">rezerwacje@mrglassproject.com</a><br>
             www: <a href="https://mrglassproject.com/" style="color:#FF8C00;text-decoration:none;">mrglassproject.com</a>
           </p>
         </td></tr>
 
       </table>
 
-      <p style="color:#a1a1aa;font-size:11px;text-align:center;margin:16px 0 0;">
-        Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać.
+      <p style="color:#a1a1aa;font-size:12px;text-align:center;margin:16px 0 0;">
+        Wiadomość została wygenerowana automatycznie. W razie pytań możesz odpowiedzieć na ten e-mail.
       </p>
 
     </td></tr>
