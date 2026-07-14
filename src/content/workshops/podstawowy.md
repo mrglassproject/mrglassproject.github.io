@@ -25,19 +25,19 @@ pricingTiers:
     setmoreUrl: "https://mrglassproject.setmore.com/classes/00fd4797-7a0e-46df-a92a-39ba7f0e682b"
     stripeUrl: ""
   - persons: 3
-    price: 1350
+    price: 1300
     setmoreUrl: "https://mrglassproject.setmore.com/classes/b7516899-6f6c-4062-ae50-ceece0d5f26d"
     stripeUrl: ""
   - persons: 4
-    price: 1800
+    price: 1700
     setmoreUrl: "https://mrglassproject.setmore.com/classes/61e43304-c665-48d4-a609-86ad9d12cf75"
     stripeUrl: ""
   - persons: 5
-    price: 2250
+    price: 2150
     setmoreUrl: "https://mrglassproject.setmore.com/classes/2549aacf-6a21-4e98-9a31-6675ba84e8c1"
     stripeUrl: ""
   - persons: 6
-    price: 2700
+    price: 2550
     setmoreUrl: "https://mrglassproject.setmore.com/classes/35e17494-0c97-4ade-9d93-e53b91f570b1"
     stripeUrl: ""
 ---
