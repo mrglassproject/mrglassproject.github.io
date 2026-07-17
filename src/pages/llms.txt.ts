@@ -15,7 +15,7 @@ export const GET: APIRoute = async () => {
 
   const content = `# ${SITE.fullName}
 
-> Pracownia szkła artystycznego w Warszawie. Maciej Rafalski — hutnik szkła z ponad 20-letnim doświadczeniem. Realizujemy projekty na zamówienie dla firm, hoteli, architektów i osób prywatnych. Techniki: hutnictwo szkła (szkło dmuchane), fusing.
+> Pracownia szkła artystycznego w Warszawie. Maciej Rafalski — hutnik i artysta szkła z ponad 20-letnim doświadczeniem. Realizujemy projekty na zamówienie dla firm, hoteli, architektów i osób prywatnych. Techniki: hutnictwo szkła (szkło dmuchane), fusing.
 
 ## Informacje ogólne
 
@@ -56,11 +56,11 @@ ${sortedWS.map(w => `### ${w.data.title}
 
 ## FAQ
 
-${sortedFaq.map(f => `### ${f.data.question}\n${f.data.answer}`).join('\n\n')}
+- [Najczęściej zadawane pytania](.../faq/): Informacje o zamówieniach, warsztatach, voucherach i rezerwacjach
 
 ## Klienci (wybrani)
 
-OBI, Wasalaa, Le Collet, AD 100, MedEstelle Institute, LUX MED
+OBI, Wasalaa, Le Collet, AD 100, MedEstelle Institute, LUX MED, Miasto Warszawa, Castorama, TVN Style, Radio Kolor, Polsat, PGE Narodowy
 
 ## Technologia i materiały
 
@@ -79,15 +79,15 @@ Surowce: szkło recyklingowe (stłuczka z odpadów przemysłowych).
 ## Mapa strony
 
 - ${SITE.finalUrl}/ — Strona główna
-- ${SITE.finalUrl}/about — Historia Macieja Rafalskiego
-- ${SITE.finalUrl}/pracownia — Pracownia, narzędzia, zespół
-- ${SITE.finalUrl}/portfolio — Galeria realizacji (dla domu / dla firm)
-- ${SITE.finalUrl}/services — Oferta dla firm i osób prywatnych
-- ${SITE.finalUrl}/workshop — Warsztaty ze szkła
-- ${SITE.finalUrl}/vouchers — Vouchery na warsztaty
-- ${SITE.finalUrl}/faq — Najczęstsze pytania
-- ${SITE.finalUrl}/contact — Kontakt i formularz
-- ${SITE.finalUrl}/posts — Blog
+- ${SITE.finalUrl}/about/ — Historia Macieja Rafalskiego
+- ${SITE.finalUrl}/workshop/ — Pracownia, narzędzia, zespół
+- ${SITE.finalUrl}/portfolio/ — Galeria realizacji (dla domu / dla firm)
+- ${SITE.finalUrl}/services/ — Oferta dla firm i osób prywatnych
+- ${SITE.finalUrl}/workshops/ — Warsztaty ze szkła
+- ${SITE.finalUrl}/vouchers/ — Vouchery na warsztaty
+- ${SITE.finalUrl}/faq/ — Najczęstsze pytania
+- ${SITE.finalUrl}/contact/ — Kontakt i formularz
+- ${SITE.finalUrl}/posts/ — Blog
 `;
 
   return new Response(content, {

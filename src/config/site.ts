@@ -1,8 +1,8 @@
 import settingsData from '../data/settings.json';
 
 export const SITE = {
-  name: 'MR Glass Project',
-  fullName: 'Pracownia Szkła Artystycznego Maciej Rafalski MR Glass Project',
+  name: 'MR Glass Project w Warszawie',
+  fullName: 'Pracownia Szkła Artystycznego MR Glass Project Maciej Rafalski',
   description: 'Pracownia szkła artystycznego w Warszawie. Projekty na zamówienie dla firm, hoteli i architektów.',
   url: 'https://mrglassproject.github.io',
   finalUrl: 'https://mrglassproject.com',

@@ -31,7 +31,7 @@ URL: ${SITE.finalUrl}
 
 ## O pracowni
 
-Pracownia Szkła Artystycznego Maciej Rafalski Glass Project mieści się w Warszawie na Ochocie (ul. Grójecka 79). Maciej Rafalski to hutnik szkła z ponad 20-letnim doświadczeniem — wiedzę przekazywali mu hutnicy pracujący w rodzinnej hucie szkła od 5. roku życia. W 2005 roku założył własną pracownię.
+Pracownia Szkła Artystycznego Maciej Rafalski Glass Project mieści się w Warszawie na Ochocie (ul. Grójecka 79). Maciej Rafalski to hutnik i artysta szkła z ponad 20-letnim doświadczeniem — wiedzę przekazywali mu hutnicy pracujący w rodzinnej hucie szkła od 5. roku życia. W 2005 roku założył własną pracownię.
 
 Pracownia specjalizuje się w dwóch technikach:
 
@@ -39,7 +39,7 @@ Pracownia specjalizuje się w dwóch technikach:
 
 2. **Fusing** — stapianie kawałków szkła w piecu hutniczym. Technika umożliwia tworzenie dużych obiektów, paneli architektonicznych i form przestrzennych niemożliwych do uzyskania metodą dmuchania.
 
-Materiały: głównie szkło recyklingowe — stłuczka z odpadów przemysłowych.
+Materiały: głównie szkło recyklingowe — stłuczka szklana z odpadów przemysłowych.
 
 Filozofia: szkło stawia warunki — nie da się go zmusić do określonego zachowania. Finalna forma jest zapisem konkretnego dnia, warunków i decyzji. Nie ma dwóch takich samych obiektów.
 
@@ -71,7 +71,7 @@ Wytwarzamy szklane formy będące integralną częścią architektury — od rze
 Nagrody, statuetki, obiekty okolicznościowe, limitowane edycje produktowe, upominki biznesowe z logo firmy. Techniki nanoszenia logo: dostępne — skonsultuj indywidualnie.
 
 **Proces B2B:**
-Brief → konsultacja (spotkanie w pracowni lub online) → oferta z opisem technicznym i harmonogramem (3–5 dni roboczych) → umowa o dzieło + zaliczka → realizacja z raportowaniem postępu → dostawa z dokumentacją techniczną. Możliwy harmonogram płatności etapowych. Faktury VAT.
+Brief → konsultacja (spotkanie w pracowni lub online) → oferta z opisem technicznym i harmonogramem (5–7 dni roboczych) → umowa o dzieło + zaliczka → realizacja z raportowaniem postępu → dostawa z dokumentacją techniczną. Możliwy harmonogram płatności etapowych. Faktury VAT.
 
 ### Dla osób prywatnych
 

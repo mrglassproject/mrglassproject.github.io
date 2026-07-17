@@ -34,29 +34,59 @@ const isLegalPage =
 <!doctype html>
 <html lang="pl">
   <head>
-    <BaseHead {...props} />
+    <BaseHead
+    {...props}
+    noindex={props.noindex ?? isLegalPage}
+/>
 
 {isProd && (
   <script is:inline define:vars={{ gtmId: ANALYTICS.gtmId }}>
+    let gtmLoaded = false;
+
     function loadGTM(id) {
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer',id);
+      if (gtmLoaded || document.querySelector(`script[src*="${id}"]`)) {
+        return;
+      }
+
+      gtmLoaded = true;
+
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js'
+        });
+
+        const firstScript = d.getElementsByTagName(s)[0];
+        const script = d.createElement(s);
+        const dataLayerParam = l !== 'dataLayer' ? '&l=' + l : '';
+
+        script.async = true;
+        script.src =
+          'https://www.googletagmanager.com/gtm.js?id=' +
+          i +
+          dataLayerParam;
+
+        firstScript.parentNode.insertBefore(script, firstScript);
+      })(window, document, 'script', 'dataLayer', id);
     }
 
-    window.addEventListener('cc:onConsent', function(e) {
-      if (e.detail.cookie.categories.includes('analytics')) {
+    function analyticsAccepted(event) {
+      return event.detail?.cookie?.categories?.includes('analytics');
+    }
+
+    window.addEventListener('cc:onConsent', function(event) {
+      if (analyticsAccepted(event)) {
         loadGTM(gtmId);
       }
     });
 
-    // Jeśli zgoda była już wcześniej udzielona
-    window.addEventListener('cc:onChange', function(e) {
-      if (e.detail.cookie.categories.includes('analytics')) {
+    window.addEventListener('cc:onChange', function(event) {
+      if (analyticsAccepted(event)) {
         loadGTM(gtmId);
-      }
+     } else {
+      window.location.reload();
+    }
     });
   </script>
 )}
