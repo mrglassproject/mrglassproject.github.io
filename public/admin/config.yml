@@ -87,6 +87,7 @@ collections:
       - { name: price,          label: Cena (zł),           widget: number }
       - { name: pricePair,      label: Cena dla 2 osób,     widget: number,  required: false }
       - { name: pricePairLabel, label: Etykieta pary,       widget: string,  required: false }
+      - { name: voucherPair,    label: Voucher dla pary,    widget: boolean, default: true }
       - name: level
         label: Poziom
         widget: select
@@ -101,7 +102,17 @@ collections:
       - { name: active,      label: Aktywny,             widget: boolean, default: true }
       - { name: featured,    label: Wyróżniony,          widget: boolean, default: false }
       - { name: order,       label: Kolejność,           widget: number,  default: 0 }
-      - { name: body,        label: Opis rozszerzony,    widget: markdown, required: false }
+      - name: pricingTiers
+        label: Cennik (tiery)
+        widget: list
+        required: false
+        fields:
+          - { name: persons,    label: Liczba osób,  widget: number }
+          - { name: price,      label: Cena (zł),    widget: number }
+          - { name: label,      label: Etykieta,     widget: string,  required: false }
+          - { name: setmoreUrl, label: Link Setmore, widget: string }
+          - { name: stripeUrl,  label: Link Stripe,  widget: string,  required: false }
+      - { name: body, label: Opis rozszerzony, widget: markdown, required: false }
 
   - name: testimonials
     label: Opinie
