@@ -4,12 +4,16 @@ import sitemap   from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://mrglassproject.github.io',
-  base: '',
+  site: 'https://mrglassproject.com',
   integrations: [
-    alpinejs(),
-    sitemap(),
-  ],
+  alpinejs(),
+  sitemap({
+    filter: (page) =>
+      !page.includes('/voucher-success/') &&
+      !page.includes('/privacy/') &&
+      !page.includes('/terms/')
+  }),
+],
   image: {
     domains: ['res.cloudinary.com'],
   },
